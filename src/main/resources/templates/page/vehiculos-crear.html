@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <link th:href="@{/style.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+</head>
+<title>Ingreso Vehiculo</title>
+<body>
+
+
+       <div class="container">
+           <h2>
+            INTRODUCCION DE VEHICULO
+           </h2>
+        <form action="" th:object="${vehiculo}">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="numeroSiniestro">numeroSiniestro</label>
+                    <input id="numeroSiniestro" type="text" class="form-control" name="numeroSiniestro" th:field="*{numeroSiniestro}"
+                        placeholder="numeroSiniestro" required />
+    
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="fechaIngreso">fechaIngreso</label>
+                    <input id="fechaIngreso" type="text" class="form-control" name="fechaIngreso" th:field="*{fechaIngreso}"
+                        placeholder="fechaIngreso" required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="cliente">cliente</label>
+                    <input id="cliente" type="text" class="form-control" name="cliente" th:field="*{cliente}"
+                        placeholder="cliente" required />
+    
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label for="placa">placa</label>
+                    <input id="placa" type="text" class="form-control" name="placa" th:field="*{placa}"
+                        placeholder="placa" required />
+    
+                </div>
+    
+                <div class="form-group col-2">
+                    <label for="marca">marca</label>
+                    <input id="marca" type="text" class="form-control" name="marca" th:field="*{marca}"
+                        placeholder="marca" required />
+    
+                </div>
+    
+                <div class="form-group col-2">
+                    <label for="anio">anio</label>
+                    <input id="anio" type="text" class="form-control" name="anio" th:field="*{anio}"
+                        placeholder="anio" required />
+    
+                </div>
+    
+                <div class="form-group col-2">
+                    <label for="color">color</label>
+                    <input id="color" type="text" class="form-control" name="color" th:field="*{color}"
+                        placeholder="color" required />
+    
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="tipoDeVehiculo">tipoDeVehiculo</label>
+                    <input id="tipoDeVehiculo" type="text" class="form-control" name="tipoDeVehiculo" th:field="*{tipoDeVehiculo}"
+                        placeholder="tipoDeVehiculo" required />
+    
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="planificadoManoDeObra">planificadoManoDeObra</label>
+                    <input id="planificadoManoDeObra" type="text" class="form-control" name="planificadoManoDeObra" th:field="*{planificadoManoDeObra}"
+                        placeholder="planificadoManoDeObra" required />
+    
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="planificadoMateriales">planificadoMateriales</label>
+                    <input id="planificadoMateriales" type="text" class="form-control" name="planificadoMateriales" th:field="*{planificadoMateriales}"
+                        placeholder="planificadoMateriales" required />
+    
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="pintorEncargado">pintorEncargado</label>
+                    <input id="pintorEncargado" type="text" class="form-control" name="pintorEncargado" th:field="*{pintorEncargado}"
+                        placeholder="pintorEncargado" required />
+    
+                </div>
+            </div>
+
+            <button type="submit"  class="btn btn-success">Guardar</button>
+        </form>
+           
+    </div>
+</body>
+</html>

@@ -26,14 +26,22 @@ public class Transaccion {
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate deFecha;
+
     String placa;
     String cliente;
     String marca;
     String tipoDeVehiculo;
     String color;
     String anio;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate fechaIngreso;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate fechaDeEntrega;
+
     String pintorEncargado;
     BigDecimal planificadoMateriales;
     BigDecimal planificadoManoDeObra;

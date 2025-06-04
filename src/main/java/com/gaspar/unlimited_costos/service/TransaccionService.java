@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransaccionService {
@@ -24,5 +25,13 @@ public class TransaccionService {
 
     public Page<Transaccion> findAllEstadoPage(String activo, Pageable page) {
         return transaccionRepository.findAllByEstadoContrato(activo,page);
+    }
+
+    public Page<Transaccion> findAllEstadoBusquedaPage(String activo, String busqueda, Pageable page) {
+        return transaccionRepository.findAllByPlacaContainingIgnoreCaseOrClienteContainingIgnoreCase(busqueda,busqueda,page);
+    }
+
+    public Optional<Transaccion> findById(Integer id) {
+        return transaccionRepository.findById(id);
     }
 }

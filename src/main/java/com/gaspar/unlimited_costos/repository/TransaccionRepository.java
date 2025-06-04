@@ -11,4 +11,6 @@ public interface TransaccionRepository extends JpaRepository<Transaccion,Integer
     List<Transaccion> findAllByEstadoContrato(String estado);
 
     Page<Transaccion> findAllByEstadoContrato(String activo, Pageable page);
+
+    Page<Transaccion> findAllByPlacaContainingIgnoreCaseOrClienteContainingIgnoreCase(String busqueda, String busqueda1, Pageable page);
 }
