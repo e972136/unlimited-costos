@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <link th:href="@{/style.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+<title>Vehiculos</title>
+<body>
+    <div class="container-fluid">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Cliente</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Numero Siniestro</th>
+                    <th>Marca</th>
+                    <th>Año</th>
+                    <th>Color</th>
+                    <th>Pintor</th>
+                </tr>
+                <tbody>
+                    <tr th:each="i: ${vehiculos}">
+                        <td hidden th:text="${i.id}"></td>
+                        <td th:text="${i.placa}"></td>
+                        <td th:text="${i.cliente}"></td>
+                        <td th:text="${i.fechaIngreso}"></td>
+                        <td th:text="${i.numeroSiniestro}"></td>
+                        <td th:text="${i.marca}"></td>
+                        <td th:text="${i.anio}"></td>
+                        <td th:text="${i.color}"></td>
+                        <td th:text="${i.pintorEncargado}"></td>                   
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+          <!--                componente paginacion, no olvidar poner el bean en el principal-->
+    <div class="row">
+        <div class="col-sm-6">
+            <!--                        activar para mostrar total de registros-->
+            <!--                                        <div sd:pagination-summary=""></div>-->
+        </div>
+        <div class="col-sm-6">
+            <nav class="pull-right">
+                <ul class="pagination" sd:pagination="full">
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!--        fin paginacion-->
+    </div>
+</body>
+</html>
