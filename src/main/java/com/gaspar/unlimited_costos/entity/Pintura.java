@@ -26,9 +26,9 @@ public class Pintura {
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDate fechaPedido;
+    LocalDate fechaIngreso;
 
-    Double cantidad;
+    String cantidad;
     BigDecimal valorTotal;
 
     @JsonFormat(pattern="yyyy-MM-dd")

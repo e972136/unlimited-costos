@@ -1,13 +1,12 @@
 package com.gaspar.unlimited_costos.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
@@ -25,6 +24,9 @@ public class SolicitudRepuestos {
     String tipoGasto;
     Double cantidad;
     BigDecimal valorPrevisto;
+
+    @ColumnDefault("false")
+    boolean entregado;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

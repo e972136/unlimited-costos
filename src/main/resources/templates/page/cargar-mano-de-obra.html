@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    
+        <link th:href="@{/style.css}" rel="stylesheet" />
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    
+    </head>
+    <title>Cargar mano de obra</title>
+<body>
+
+  
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                Cargar mano de obra
+            </h3>
+        </div>
+        <div class="card-body">
+            
+            <form action=""  th:object="${solicitud}">
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="fechaDePago">fechaDePago</label>
+                        <input id="fechaDePago" type="text" class="form-control" name="tipoGasto" th:field="*{fechaDePago}"
+                            placeholder="fechaDePago" required />
+                    </div>           
+                    <div class="form-group col-6">
+                        <label for="montoDePago">montoDePago</label>
+                        <input id="montoDePago" type="text" class="form-control" name="montoDePago" th:field="*{montoDePago}"
+                            placeholder="montoDePago" required />
+                    </div>
+                </div>
+                
+         
+             
+            </form>
+        </div>
+
+    </div>
+
+   
+
+    <div class="container-fluid">
+        <h3 class="text-danger" th:text="${'Acumulado L '+calculado}">  </h3>
+        <h3 class="text-danger" th:text="${'Planificado L '+planificado}">  </h3>
+         <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>fechaDePago</th>
+                    <th>montoDePago</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="i: ${manoDeObraList}">
+                    <td th:text="${i.fechaDePago}"></td>
+                    <td th:text="${i.montoDePago}"></td>                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
