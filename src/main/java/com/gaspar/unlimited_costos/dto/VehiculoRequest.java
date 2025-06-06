@@ -30,5 +30,6 @@ public class VehiculoRequest {
     BigDecimal planificadoManoDeObra;
     BigDecimal planificadoMateriales;
     String pintorEncargado;
+    String aseguradora;
 
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <link th:href="@{/style.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+<title>Vehiculos</title>
+<body>
+    <h2>LISTADO REPUESTOS MENSUAL</h2>
+    <h3 th:text="${mensaje + ', Total del mes:' + totalMes}"></h3>
+    <div class="container-fluid">        
+        <ol>
+            <li th:each="i: ${lista}">
+
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label th:text="${'Placa: ' + i.vehiculo.placa}"></label>    
+                    </div>    
+                    <div class="form-group col-3">
+                        <label th:text="${'Marca: ' + i.vehiculo.marca}"></label>    
+                    </div>
+    
+                    <div class="form-group col-3">
+                        <label th:text="${'Tipo: ' + i.vehiculo.tipoDeVehiculo}"></label>                      
+                    </div>
+
+
+                    <div class="form-group col-3">
+                        <label th:text="${'Total : ' + i.totalPorCarro}"></label>                      
+                    </div>                    
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table  table-dark table-bordered table-striped" style="border: 2px solid black;">
+                        <thead>
+                            <tr>
+                                <th>Factura</th>
+                                <th>fecha Factura</th>
+                                <th>proveedor</th>
+                                <th>tipo Gasto</th>
+                                <th>cantidad</th>
+                                <th>valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="j: ${i.repuestosList}">
+                                <td th:text="${j.numeroFacturaProveedor}"></td>
+                                <td th:text="${j.fechaFactura}"></td>
+                                <td th:text="${j.proveedor}"></td>
+                                <td th:text="${j.tipoGasto}"></td>
+                                <td th:text="${j.cantidad}"></td>
+                                <td th:text="${j.valorDelGasto}"></td>
+                            </tr>
+                    </table>
+                </div>
+            </li>           
+        </ol>     
+        <h2 th:text="${'Total del mes: ' + totalMes}"></h2>
+    </div>
+</body>
+</html>

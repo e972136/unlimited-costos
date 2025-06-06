@@ -17,4 +17,8 @@ public class ManoDeObraService {
     public List<ManoDeObra> findAllByIdTransaccion(Integer idTransaccion) {
         return manoDeObraRepository.findAllByIdTransaccion(idTransaccion);
     }
+
+    public ManoDeObra save(ManoDeObra solicitud) {
+        return manoDeObraRepository.save(solicitud);
+    }
 }

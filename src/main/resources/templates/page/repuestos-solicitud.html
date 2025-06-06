@@ -15,43 +15,80 @@
     </head>
     <title>Ingreso de cotizaciones</title>
 <body>
-
-  
-
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">
-                Ingreso de cotizaciones
-            </h3>
-        </div>
-        <div class="card-body">
-            
-            <form action=""  th:object="${solicitud}">
-
-                <div class="form-row">
-                    <div class="form-group col-4">
-                        <label for="tipoGasto">tipoGasto</label>
-                        <input id="tipoGasto" type="text" class="form-control" name="tipoGasto" th:field="*{tipoGasto}"
-                            placeholder="tipoGasto" required />
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="cantidad">cantidad</label>
-                        <input id="cantidad" type="text" class="form-control" name="cantidad" th:field="*{cantidad}"
-                            placeholder="cantidad" required />
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="valorPrevisto">valorPrevisto</label>
-                        <input id="valorPrevisto" type="text" class="form-control" name="valorPrevisto" th:field="*{valorPrevisto}"
-                            placeholder="valorPrevisto" required />
-                    </div>
-                </div>
-                
-         
-             
-            </form>
-        </div>
-
+    <!-- Menu-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" th:href="@{/vehiculo/listado}">Taller Unlimited SPS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/listado}">Listado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
+  
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Ingreso de cotizaciones
+                </h3>
+            </div>
+            <div class="card-body">
+                
+                <form th:action="@{/solicitud-repuesto/guardar/{idTransaccion}(idTransaccion=${vehiculo.id})}" method="POST"   th:object="${solicitud}">
+    
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="tipoGasto">tipoGasto</label>
+                            <input id="tipoGasto" type="text" class="form-control" name="tipoGasto" th:field="*{tipoGasto}"
+                                placeholder="tipoGasto" required />
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="cantidad">cantidad</label>
+                            <input id="cantidad" type="number" class="form-control" name="cantidad" th:field="*{cantidad}"
+                                placeholder="cantidad" 
+                                step="0.01" min="0"
+                                required />
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="valorPrevisto">valorPrevisto</label>
+                            <input id="valorPrevisto" type="number" class="form-control" name="valorPrevisto" th:field="*{valorPrevisto}"
+                                placeholder="valorPrevisto" 
+                                step="0.01" min="0"
+                                required />
+                        </div>
+                    </div>
+                    
+                    <button type="submit"  class="btn btn-success">Guardar</button>
+                    <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5m-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+                      </svg>             
+                      </a>         
+                 
+                </form>
+            </div>
+    
+        </div>
+    </div>
+
+
 
    
 

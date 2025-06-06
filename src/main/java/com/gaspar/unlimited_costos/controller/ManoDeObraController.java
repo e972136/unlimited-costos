@@ -5,12 +5,11 @@ import com.gaspar.unlimited_costos.entity.ManoDeObra;
 import com.gaspar.unlimited_costos.service.ManoDeObraService;
 import com.gaspar.unlimited_costos.service.TransaccionService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +46,8 @@ public class ManoDeObraController {
                         i.getTipoDeVehiculo(),
                         i.getPlanificadoManoDeObra(),
                         i.getPlanificadoMateriales(),
-                        i.getPintorEncargado()
+                        i.getPintorEncargado(),
+                        i.getAseguradora()
                 )
         ).get();
 
@@ -65,4 +65,15 @@ public class ManoDeObraController {
         return mav;
     }
 
+    @PostMapping("/guardar/{idTransaccion}")
+    public ModelAndView guardar(
+            @PathVariable Integer idTransaccion,
+            @ModelAttribute ManoDeObra solicitud
+    ){
+        System.out.println("patito");
+        solicitud.setIdTransaccion(idTransaccion);
+        solicitud.setFechaSistema(LocalDate.now());
+        ManoDeObra bd = manoDeObraService.save(solicitud);
+        return new ModelAndView("redirect:/mano-de-obra/cargar/"+idTransaccion);
+    }
 }

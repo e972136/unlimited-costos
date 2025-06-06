@@ -29,6 +29,8 @@ public class ManoDeObra {
 
     BigDecimal montoDePago;
 
+    String pintor;
+
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate fechaSistema;

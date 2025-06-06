@@ -17,7 +17,30 @@
 <title>Ingreso Vehiculo</title>
 
 <body>
-
+    <!-- Menu-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" th:href="@{/vehiculo/listado}">Taller Unlimited SPS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/listado}">Listado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
     <div class="container">
         <h2>
@@ -134,8 +157,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a class="btn btn-primary btn-lg m-1" th:href="@{/vehiculo/ingreso}">solicitud
-                                    materiales</a>
+                                <a class="btn btn-primary btn-lg m-1 disabled" th:href="@{/vehiculo/ingreso}"  >solicitud materiales</a>
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-lg m-1" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">otros materiales</a>
@@ -145,21 +167,19 @@
                         <tr>
                             <td>
                                 <a class="btn btn-primary btn-lg m-1"
-                                    th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud
-                                    repuestos</a>
+                                    th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud repuestos</a>
 
                             </td>
                             <td>
 
-                                <a class="btn btn-primary btn-lg m-1" th:href="@{/vehiculo/ingreso}">ir a control de
-                                    costos</a>
+                                <a class="btn btn-primary btn-lg m-1" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
 
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                <a class="btn btn-primary btn-lg m-1" th:href="@{/vehiculo/ingreso}">Compra Repuestos</a>
+                                <a class="btn btn-primary btn-lg m-1" th:href="@{/repuestos/cargar/{id}(id=${vehiculo.id})}">Compra Repuestos</a>
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-lg m-1" th:href="@{/mano-de-obra/cargar/{id}(id=${vehiculo.id})}">Cargar mano de obra</a>

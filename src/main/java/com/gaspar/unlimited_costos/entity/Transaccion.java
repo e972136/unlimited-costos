@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
 public class Transaccion {
     @Id
@@ -47,6 +47,7 @@ public class Transaccion {
     BigDecimal planificadoManoDeObra;
     String estadoContrato;
     String numeroSiniestro;
+    String aseguradora;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

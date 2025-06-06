@@ -1,36 +1,40 @@
 package com.gaspar.unlimited_costos.controller;
 
 import com.gaspar.unlimited_costos.dto.VehiculoRequest;
+import com.gaspar.unlimited_costos.entity.Pintura;
+import com.gaspar.unlimited_costos.entity.Repuestos;
 import com.gaspar.unlimited_costos.entity.SolicitudRepuestos;
+import com.gaspar.unlimited_costos.service.RepuestosService;
 import com.gaspar.unlimited_costos.service.SolicitudRepuestosService;
 import com.gaspar.unlimited_costos.service.TransaccionService;
+import com.gaspar.unlimited_costos.util.ComboItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 import static com.gaspar.unlimited_costos.util.MetodosGenerales.cambioFormatoAEstandar;
 
 @Controller
-@RequestMapping("/solicitud-repuesto")
-public class SolicitudRepuestosController {
-
+@RequestMapping("/repuestos")
+public class RepuestosController {
     private final TransaccionService transaccionService;
+    private final RepuestosService repuestosService;
     private final SolicitudRepuestosService solicitudRepuestosService;
 
-    public SolicitudRepuestosController(TransaccionService transaccionService, SolicitudRepuestosService solicitudRepuestosService) {
+
+    public RepuestosController(TransaccionService transaccionService, RepuestosService repuestosService, SolicitudRepuestosService solicitudRepuestosService) {
         this.transaccionService = transaccionService;
+        this.repuestosService = repuestosService;
         this.solicitudRepuestosService = solicitudRepuestosService;
     }
 
-    @GetMapping("/pedido/{idTransaccion}")
+    @GetMapping("/cargar/{idTransaccion}")
     public ModelAndView pedido(
-        @PathVariable Integer idTransaccion
+            @PathVariable Integer idTransaccion
     ){
         VehiculoRequest vehiculo = transaccionService.findById(idTransaccion).map(
                 i-> VehiculoRequest.of(
@@ -49,32 +53,36 @@ public class SolicitudRepuestosController {
                         i.getAseguradora()
                 )
         ).get();
+        List<Repuestos> repuestosList = repuestosService.findAllByIdTransaccion(idTransaccion);
+        BigDecimal calculado = repuestosList.stream().map(Repuestos::getValorDelGasto).reduce(BigDecimal.ZERO,BigDecimal::add);
 
         List<SolicitudRepuestos> solicitudRepuestosList = solicitudRepuestosService.findAllByIdTransaccion(idTransaccion);
+        BigDecimal planificado = solicitudRepuestosList.stream().map(SolicitudRepuestos::getValorPrevisto).reduce(BigDecimal.ZERO,BigDecimal::add);
 
-        BigDecimal calculado = solicitudRepuestosList.stream().map(SolicitudRepuestos::getValorPrevisto).reduce(BigDecimal.ZERO, (subtotal, element) -> subtotal.add(element));
+        List<ComboItem> solicitudlist = solicitudRepuestosList.stream().map(e ->
+                new ComboItem(e.getTipoGasto(), e.getTipoGasto())
+        ).toList();
 
-        solicitudRepuestosList.sort(Comparator.comparing(SolicitudRepuestos::getTipoGasto));
+        ModelAndView mav = new ModelAndView("./page/repuestos-compra");
 
-        ModelAndView mav = new ModelAndView("./page/repuestos-solicitud");
-        mav.addObject("solicitudRepuestosList", solicitudRepuestosList);
         mav.addObject("vehiculo", vehiculo);
-        mav.addObject("solicitud",new SolicitudRepuestos());
+        mav.addObject("solicitud", new Repuestos());
+        mav.addObject("repuestosList", repuestosList);
+        mav.addObject("solicitudlist", solicitudlist);
         mav.addObject("calculado",cambioFormatoAEstandar(calculado.toString()));
-
-
+        mav.addObject("planificado",cambioFormatoAEstandar(planificado.toString()));
         return mav;
     }
 
     @PostMapping("/guardar/{idTransaccion}")
-    public ModelAndView salvar(
+    public ModelAndView guardar(
             @PathVariable Integer idTransaccion,
-            @ModelAttribute SolicitudRepuestos solicitud
+            @ModelAttribute Repuestos solicitud
     ){
         solicitud.setIdTransaccion(idTransaccion);
-        solicitud.setEntregado(false);
+        solicitud.setEstadoGasto("USADO");
         solicitud.setFechaSistema(LocalDate.now());
-        SolicitudRepuestos nuevo = solicitudRepuestosService.save(solicitud);
-        return new ModelAndView("redirect:/solicitud-repuesto/pedido/"+idTransaccion);
+        Repuestos bd = repuestosService.save(solicitud);
+        return new ModelAndView("redirect:/repuestos/cargar/"+idTransaccion);
     }
 }

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sd="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -17,26 +15,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 </head>
 <title>Vehiculos</title>
+
 <body>
-    
+    <!-- Menu-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" th:href="@{/vehiculo/listado}">Taller Unlimited SPS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/listado}">Listado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
 
 
     <div class="container-fluid">
 
-        <div class="row">
-            <a class="btn btn-primary btn-lg" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
-        </div>
-        
-            <form action="" method="get" autocomplete="off">
-                <div class="input-group mb-3">
-                    <button class="btn btn-primary" type="submit" id="button-addon1">
-                        <i class="fa fa-search"></i>
-                    </button>
-                    <input type="text" name="busqueda" class="form-control color-fondo" placeholder="Buscar por Placa o Nombre Cliente"
-                           th:value="${param.busqueda}">
-                </div>
-            </form>
-        
+        <form action="" method="get" autocomplete="off">
+            <div class="input-group mb-3">
+                <button class="btn btn-primary" type="submit" id="button-addon1">
+                    <i class="fa fa-search"></i>
+                </button>
+                <input type="text" name="busqueda" class="form-control color-fondo"
+                    placeholder="Buscar por Placa o Nombre Cliente o Siniestro" th:value="${param.busqueda}">
+            </div>
+        </form>
+
 
         <table class="table table-dark table-striped">
             <thead>
@@ -45,46 +64,45 @@
                     <th>Cliente</th>
                     <th>Fecha Ingreso</th>
                     <th>Numero Siniestro</th>
-                    <th>Marca</th>
-                    <th>Año</th>
-                    <th>Color</th>
+                    <th>Aseguradora</th>
+                    <th>Detalle</th>
                     <th>Pintor</th>
                     <th>Accion</th>
                 </tr>
-                <tbody>
-                    <tr th:each="i: ${vehiculos}">
-                        <td hidden th:text="${i.id}"></td>
-                        <td th:text="${i.placa}"></td>
-                        <td th:text="${i.cliente}"></td>
-                        <td th:text="${i.fechaIngreso}"></td>
-                        <td th:text="${i.numeroSiniestro}"></td>
-                        <td th:text="${i.marca}"></td>
-                        <td th:text="${i.anio}"></td>
-                        <td th:text="${i.color}"></td>
-                        <td th:text="${i.pintorEncargado}"></td>                   
-                        <td>
-                            <a th:href="@{/vehiculo/editar/{id}(id=${i.id})}" class="btn btn-warning">editar<i
+            <tbody>
+                <tr th:each="i: ${vehiculos}">
+                    <td hidden th:text="${i.id}"></td>
+                    <td th:text="${i.placa}"></td>
+                    <td th:text="${i.cliente}"></td>
+                    <td th:text="${i.fechaIngreso}"></td>
+                    <td th:text="${i.numeroSiniestro}"></td>
+                    <td th:text="${i.aseguradora}"></td>
+                    <td th:text="${i.marca + '/' + i.anio + '/' + i.color}"></td>
+                    <td th:text="${i.pintorEncargado}"></td>
+                    <td>
+                        <a th:href="@{/vehiculo/editar/{id}(id=${i.id})}" class="btn btn-warning">editar<i
                                 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </td>                   
-                    </tr>
-                </tbody>
+                    </td>
+                </tr>
+            </tbody>
             </thead>
         </table>
-          <!--                componente paginacion, no olvidar poner el bean en el principal-->
-    <div class="row">
-        <div class="col-sm-6">
-            <!--                        activar para mostrar total de registros-->
-            <!--                                        <div sd:pagination-summary=""></div>-->
-        </div>
-        <div class="col-sm-6">
-            <nav class="pull-right">
-                <ul class="pagination" sd:pagination="full">
+        <!--                componente paginacion, no olvidar poner el bean en el principal-->
+        <div class="row">
+            <div class="col-sm-6">
+                <!--                        activar para mostrar total de registros-->
+                <!--                                        <div sd:pagination-summary=""></div>-->
+            </div>
+            <div class="col-sm-6">
+                <nav class="pull-right">
+                    <ul class="pagination" sd:pagination="full">
 
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
-    <!--        fin paginacion-->
+        <!--        fin paginacion-->
     </div>
 </body>
+
 </html>

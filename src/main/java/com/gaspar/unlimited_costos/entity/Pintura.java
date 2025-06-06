@@ -26,7 +26,7 @@ public class Pintura {
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDate fechaIngreso;
+    LocalDate fechaPedido;
 
     String cantidad;
     BigDecimal valorTotal;
@@ -34,4 +34,8 @@ public class Pintura {
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate fechaSistema;
+
+    public Pintura(Integer idTransaccion) {
+        this.idTransaccion = idTransaccion;
+    }
 }

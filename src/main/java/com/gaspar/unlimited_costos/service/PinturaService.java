@@ -18,4 +18,8 @@ public class PinturaService {
     public List<Pintura> findAllByIdTransaccion(Integer idTransaccion) {
         return otrosMaterialesRepository.findAllByIdTransaccion(idTransaccion);
     }
+
+    public Pintura save(Pintura solicitud) {
+        return otrosMaterialesRepository.save(solicitud);
+    }
 }

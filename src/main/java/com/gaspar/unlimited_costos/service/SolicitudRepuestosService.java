@@ -17,4 +17,8 @@ public class SolicitudRepuestosService {
     public List<SolicitudRepuestos> findAllByIdTransaccion(Integer idTransaccion) {
         return solicitudRepuestosRepository.findAllByIdTransaccion(idTransaccion);
     }
+
+    public SolicitudRepuestos save(SolicitudRepuestos solicitud) {
+        return solicitudRepuestosRepository.save(solicitud);
+    }
 }

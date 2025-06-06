@@ -7,12 +7,11 @@ import com.gaspar.unlimited_costos.repository.PinturaRepository;
 import com.gaspar.unlimited_costos.service.PinturaService;
 import com.gaspar.unlimited_costos.service.TransaccionService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +47,8 @@ public class OtrosMaterialesController {
                         i.getTipoDeVehiculo(),
                         i.getPlanificadoManoDeObra(),
                         i.getPlanificadoMateriales(),
-                        i.getPintorEncargado()
+                        i.getPintorEncargado(),
+                        i.getAseguradora()
                 )
         ).get();
 
@@ -63,4 +63,16 @@ public class OtrosMaterialesController {
         mav.addObject("planificado",cambioFormatoAEstandar(vehiculo.getPlanificadoMateriales().toString()));
         return mav;
     }
+
+    @PostMapping("/guardar/{idTransaccion}")
+    public ModelAndView pedido(
+            @PathVariable Integer idTransaccion,
+            @ModelAttribute Pintura solicitud
+    ){
+        solicitud.setIdTransaccion(idTransaccion);
+        solicitud.setFechaSistema(LocalDate.now());
+        Pintura otrosMateriales = otrosMaterialesService.save(solicitud);
+        return new ModelAndView("redirect:/otros-materiales/cargar/"+idTransaccion);
+    }
+
 }

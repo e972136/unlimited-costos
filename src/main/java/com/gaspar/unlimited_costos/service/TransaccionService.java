@@ -1,11 +1,13 @@
 package com.gaspar.unlimited_costos.service;
 
+import com.gaspar.unlimited_costos.dto.VehiculoRequest;
 import com.gaspar.unlimited_costos.entity.Transaccion;
 import com.gaspar.unlimited_costos.repository.TransaccionRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +35,34 @@ public class TransaccionService {
 
     public Optional<Transaccion> findById(Integer id) {
         return transaccionRepository.findById(id);
+    }
+
+    public List<Transaccion> findAllById(List<Integer> idTransaccion) {
+        return transaccionRepository.findAllById(idTransaccion);
+    }
+
+
+    public Optional<Transaccion> save(VehiculoRequest v) {
+        Transaccion transaccion =Transaccion.of(
+                null,
+                "",
+                null,
+                v.getPlaca(),
+                v.getCliente(),
+                v.getMarca(),
+                v.getTipoDeVehiculo(),
+                v.getColor(),
+                v.getAnio(),
+                v.getFechaIngreso(),
+                null,
+                v.getPintorEncargado(),
+                v.getPlanificadoMateriales(),
+                v.getPlanificadoManoDeObra(),
+                "ACTIVO",
+                v.getNumeroSiniestro(),
+                v.getAseguradora(),
+                LocalDate.now()
+        );
+        return Optional.of(transaccionRepository.save(transaccion));
     }
 }
