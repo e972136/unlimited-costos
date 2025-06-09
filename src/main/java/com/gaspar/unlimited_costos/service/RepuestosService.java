@@ -19,7 +19,7 @@ public class RepuestosService {
     }
 
     public List<Repuestos> findAllByMonth(String periodo) {
-        String split[] = periodo.split("-");
+        String[] split = periodo.split("-");
         Double year = Double.parseDouble(split[0]);
         Double month = Double.parseDouble(split[1]);
         return repuestosRepository.findByYearMonth(year,month);

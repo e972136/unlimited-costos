@@ -5,6 +5,8 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public class MetodosGenerales {
+    private MetodosGenerales(){}
+
     public static String cambioFormatoAEstandar(String original){
         if(original.isEmpty()) {
             return original;

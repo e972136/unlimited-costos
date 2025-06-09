@@ -1,9 +1,7 @@
 package com.gaspar.unlimited_costos.controller;
 
 import com.gaspar.unlimited_costos.dto.VehiculoRequest;
-import com.gaspar.unlimited_costos.entity.ManoDeObra;
 import com.gaspar.unlimited_costos.entity.Pintura;
-import com.gaspar.unlimited_costos.repository.PinturaRepository;
 import com.gaspar.unlimited_costos.service.PinturaService;
 import com.gaspar.unlimited_costos.service.TransaccionService;
 import org.springframework.stereotype.Controller;
@@ -13,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import static com.gaspar.unlimited_costos.util.MetodosGenerales.cambioFormatoAEstandar;
 

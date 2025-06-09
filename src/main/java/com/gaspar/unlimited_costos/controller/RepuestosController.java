@@ -1,7 +1,6 @@
 package com.gaspar.unlimited_costos.controller;
 
 import com.gaspar.unlimited_costos.dto.VehiculoRequest;
-import com.gaspar.unlimited_costos.entity.Pintura;
 import com.gaspar.unlimited_costos.entity.Repuestos;
 import com.gaspar.unlimited_costos.entity.SolicitudRepuestos;
 import com.gaspar.unlimited_costos.service.RepuestosService;
