@@ -1,0 +1,20 @@
+.color-fondo{
+    background-color: #f2faf4;
+    border: 3px solid #205e04;
+}
+
+.patito-ancho{
+    height: 100%;
+    width: 300px;
+}
+
+.patito{
+    background-color: #f2faf4;
+    border: 3px solid #205e04; 
+
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+}

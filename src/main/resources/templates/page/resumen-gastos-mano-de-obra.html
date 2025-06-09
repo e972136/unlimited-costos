@@ -18,9 +18,10 @@
 </head>
 <title>Pago de Mano de Obra</title>
 <body>
-    <h2>Pago de Mano de Obra</h2>
-    <h3 th:text="${mensaje + ', Total del mes:' + totalMes}"></h3>
-    <div class="container-fluid">        
+
+    <div class="container-fluid">      
+        <h2>Pago de Mano de Obra</h2>
+        <h3 th:text="${mensaje + ', Total del mes:' + totalMes}"></h3>  
         <ol>
             <li th:each="i: ${lista}">
 

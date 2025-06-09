@@ -27,13 +27,13 @@
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/listado}">Listado</a>
+                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/listado}">Listado</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
+                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
+                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
                     </li>
                 </ul>
             </div>
@@ -54,27 +54,33 @@
                     <div class="form-row">
                         <div class="form-group col-4">
                             <label for="tipoGasto">tipoGasto</label>
-                            <input id="tipoGasto" type="text" class="form-control" name="tipoGasto" th:field="*{tipoGasto}"
+                            <input id="tipoGasto" type="text" class="form-control  patito" name="tipoGasto" th:field="*{tipoGasto}"
                                 placeholder="tipoGasto" required />
                         </div>
                         <div class="form-group col-4">
                             <label for="cantidad">cantidad</label>
-                            <input id="cantidad" type="number" class="form-control" name="cantidad" th:field="*{cantidad}"
+                            <input id="cantidad" type="number" class="form-control  patito" name="cantidad" th:field="*{cantidad}"
                                 placeholder="cantidad" 
                                 step="0.01" min="0"
                                 required />
                         </div>
                         <div class="form-group col-4">
                             <label for="valorPrevisto">valorPrevisto</label>
-                            <input id="valorPrevisto" type="number" class="form-control" name="valorPrevisto" th:field="*{valorPrevisto}"
+                            <input id="valorPrevisto" type="number" class="form-control  patito" name="valorPrevisto" th:field="*{valorPrevisto}"
                                 placeholder="valorPrevisto" 
                                 step="0.01" min="0"
                                 required />
                         </div>
                     </div>
                     
-                    <button type="submit"  class="btn btn-success">Guardar</button>
-                    <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                    <button type="submit" class="btn btn-success m-3 btn-lg patito-ancho">Guardar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                            <path d="M11 2H9v3h2z"/>
+                            <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                          </svg>
+                    </button>
+        
+                    <a class="btn btn-primary btn-lg mr-1 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

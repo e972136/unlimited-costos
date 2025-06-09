@@ -18,9 +18,10 @@
 </head>
 <title>Vehiculos</title>
 <body>
-    <h2>LISTADO REPUESTOS MENSUAL</h2>
-    <h3 th:text="${mensaje + ', Total del mes:' + totalMes}"></h3>
+
     <div class="container-fluid">        
+        <h2>LISTADO REPUESTOS MENSUAL</h2>
+        <h3 th:text="${mensaje + ', Total del mes:' + totalMes}"></h3>
         <ol>
             <li th:each="i: ${lista}">
 
