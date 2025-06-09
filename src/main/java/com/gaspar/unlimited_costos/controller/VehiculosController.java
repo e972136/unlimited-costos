@@ -1,8 +1,13 @@
 package com.gaspar.unlimited_costos.controller;
 
+import com.gaspar.unlimited_costos.dto.ManoDeObraReporte;
 import com.gaspar.unlimited_costos.dto.VehiculoRequest;
+import com.gaspar.unlimited_costos.entity.ManoDeObra;
+import com.gaspar.unlimited_costos.entity.Pintura;
 import com.gaspar.unlimited_costos.entity.Repuestos;
 import com.gaspar.unlimited_costos.entity.Transaccion;
+import com.gaspar.unlimited_costos.service.ManoDeObraService;
+import com.gaspar.unlimited_costos.service.PinturaService;
 import com.gaspar.unlimited_costos.service.RepuestosService;
 import com.gaspar.unlimited_costos.service.TransaccionService;
 import org.springframework.data.domain.Page;
@@ -18,10 +23,7 @@ import static java.util.Objects.isNull;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -31,10 +33,14 @@ public class VehiculosController {
 
     private final TransaccionService transaccionService;
     private final RepuestosService repuestosService;
+    private final ManoDeObraService manoDeObraService;
+    private final PinturaService otrosGastosService;
 
-    public VehiculosController(TransaccionService transaccionService, RepuestosService repuestosService) {
+    public VehiculosController(TransaccionService transaccionService, RepuestosService repuestosService, ManoDeObraService manoDeObraService, PinturaService otrosGastosService) {
         this.transaccionService = transaccionService;
         this.repuestosService = repuestosService;
+        this.manoDeObraService = manoDeObraService;
+        this.otrosGastosService = otrosGastosService;
     }
 
     @GetMapping("/listado")
@@ -120,7 +126,34 @@ public class VehiculosController {
     ) {
         ModelAndView mav = new ModelAndView("./page/control-costos");
         Transaccion vehiculo = transaccionService.findById(id).get();
+        List<Repuestos> repuestosComprados = repuestosService.findAllByIdTransaccion(id);
+        List<ManoDeObra> manoDeObra = manoDeObraService.findAllByIdTransaccion(id);
+        List<Pintura> otrosGastos = otrosGastosService.findAllByIdTransaccion(id);
+
+
+
+
+
+
+        BigDecimal totalRepuestos = repuestosComprados.stream().map(e->e.getValorDelGasto()).reduce(BigDecimal.ZERO,BigDecimal::add);
+        BigDecimal totalPinturas = otrosGastos.stream().map(e->e.getValorTotal()).reduce(BigDecimal.ZERO,BigDecimal::add);
+        BigDecimal totalManoObra = manoDeObra.stream().map(e->e.getMontoDePago()).reduce(BigDecimal.ZERO,BigDecimal::add);
+
         mav.addObject("vehiculo", vehiculo);
+        mav.addObject("repuestosComprados", repuestosComprados);
+        mav.addObject("manoDeObra", manoDeObra);
+        mav.addObject("otrosGastos", otrosGastos);
+
+        mav.addObject("totalRepuestos",cambioFormatoAEstandar(totalRepuestos.toString()));
+        mav.addObject("totalPinturas", cambioFormatoAEstandar(totalPinturas.toString()));
+        mav.addObject("totalManoObra", cambioFormatoAEstandar(totalManoObra.toString()));
+
+        BigDecimal totalGastado = totalRepuestos.add(totalPinturas).add(totalManoObra);
+
+
+        mav.addObject("totalMateriales", cambioFormatoAEstandar(totalPinturas.toString()));
+        mav.addObject("totalGastado", cambioFormatoAEstandar(totalGastado.toString()));
+
         return mav;
     }
 
@@ -159,6 +192,42 @@ public class VehiculosController {
 
         return mav;
     }
+
+    @GetMapping("/resumen-gastos/mano-obra/{periodo}")
+    public ModelAndView resumenGastosManoObra(
+            @PathVariable String periodo
+    ){
+        ModelAndView mav = new ModelAndView("./page/resumen-gastos-mano-de-obra");
+
+        List<ManoDeObraReporte> manoDeObra = manoDeObraService.findAllByMonth(periodo);
+        Map<String, List<ManoDeObraReporte>> collect = manoDeObra.stream()
+                .collect(Collectors.groupingBy(ManoDeObraReporte::getPintor,TreeMap::new,Collectors.toList()));
+        List<ManoObraMensual> lista = new ArrayList<>();
+        final BigDecimal[] totalMes = {BigDecimal.ZERO};
+        collect.forEach((i,v)->{
+            v.sort(Comparator.comparing(ManoDeObraReporte::getFechaDePago)
+                    .thenComparing(ManoDeObraReporte::getPlaca));
+
+            BigDecimal totalPintor =  v.stream().map(ManoDeObraReporte::getMontoDePago).reduce(BigDecimal.ZERO,BigDecimal::add);
+            totalMes[0] = totalMes[0].add(totalPintor);
+
+            lista.add(new ManoObraMensual(i,cambioFormatoAEstandar(totalPintor.toString()),v));
+                });
+
+        String mensaje = "Del periodo: " + periodo;
+
+        mav.addObject("mensaje",mensaje);
+        mav.addObject("lista", lista);
+        mav.addObject("totalMes", cambioFormatoAEstandar(totalMes[0].toString()));
+        return mav;
+    }
+
+    record ManoObraMensual(
+            String pintor,
+            String totalPintor,
+            List<ManoDeObraReporte> list
+    )
+    {}
 
     record RepuestosMensual(
             Transaccion vehiculo,

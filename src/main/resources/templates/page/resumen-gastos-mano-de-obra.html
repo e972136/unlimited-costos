@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <link th:href="@{/style.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+<title>Pago de Mano de Obra</title>
+<body>
+    <h2>Pago de Mano de Obra</h2>
+    <h3 th:text="${mensaje + ', Total del mes:' + totalMes}"></h3>
+    <div class="container-fluid">        
+        <ol>
+            <li th:each="i: ${lista}">
+
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label th:text="${'pintor: ' + i.pintor}"></label>    
+                    </div>    
+                    <div class="form-group col-3">
+                        <label th:text="${'totalPintor: ' + i.totalPintor}"></label>    
+                    </div>    
+               
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table  table-dark table-bordered table-striped table-sm" style="border: 2px solid black;">
+                        <thead>
+                            <tr>
+                                <th>placa</th>
+                                <th>fechaDePago</th>
+                                <th>montoDePagoStr</th>                                
+                                <th>idTransaccion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="j: ${i.list}">
+                                <td th:text="${j.placa}"></td>
+                                <td th:text="${j.fechaDePago}"></td>
+                                <td th:text="${j.montoDePagoStr}"></td>                                
+                                <td th:text="${j.idTransaccion}"></td>
+                            </tr>
+                    </table>
+                </div>
+            </li>           
+        </ol>     
+        <h2 th:text="${'Total del mes: ' + totalMes}"></h2>
+    </div>
+</body>
+</html>

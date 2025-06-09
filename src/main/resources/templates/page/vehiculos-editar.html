@@ -153,36 +153,31 @@
 
             <div class="form-row col-12">
 
-                <table class="table table-striped">
+                <table class="table table-striped  table-sm">
                     <tbody>
                         <tr>
                             <td>
                                 <a class="btn btn-primary btn-lg m-1 disabled" th:href="@{/vehiculo/ingreso}"  >solicitud materiales</a>
                             </td>
                             <td>
-                                <a class="btn btn-primary btn-lg m-1" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">otros materiales</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
                                 <a class="btn btn-primary btn-lg m-1"
                                     th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud repuestos</a>
-
-                            </td>
-                            <td>
-
-                                <a class="btn btn-primary btn-lg m-1" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
-
-                            </td>
+                            </td>                        
                         </tr>
-
                         <tr>
+                            <td>
+                                <a class="btn btn-primary btn-lg m-1" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">agregar otros materiales</a>
+                            </td>
                             <td>
                                 <a class="btn btn-primary btn-lg m-1" th:href="@{/repuestos/cargar/{id}(id=${vehiculo.id})}">Compra Repuestos</a>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <a class="btn btn-primary btn-lg m-1" th:href="@{/mano-de-obra/cargar/{id}(id=${vehiculo.id})}">Cargar mano de obra</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-lg m-1" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
                             </td>
                         </tr>
                     </tbody>

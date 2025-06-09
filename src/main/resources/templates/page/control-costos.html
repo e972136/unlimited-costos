@@ -17,33 +17,7 @@
 <title>Control Costos</title>
 
 <body>
-    <!-- Menu-->
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" th:href="@{/vehiculo/listado}">Taller Unlimited SPS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Links -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/listado}">Listado</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-
-    <div class="container">
+     <div class="container">
         <h2>
             SERVICIO DE AUTOS UNLIMITED
         </h2>
@@ -128,26 +102,85 @@
                         readonly />
                 </div>
             </div>
+            <h2>Repuestos Comprados</h2>
+            <table class="table table-dark table-striped  table-sm">               
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo Gasto</th>
+                        <th>Cantidad</th>
+                        <th>Valor Gasto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="i: ${repuestosComprados}">
+                        <td th:text="${i.fechaFactura}"></td>
+                        <td th:text="${i.tipoGasto}"></td>
+                        <td th:text="${i.cantidad}"></td>
+                        <td th:text="${i.valorDelGasto}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 th:text="${'Total repuestos: ' + totalRepuestos}"></h3>
+            <h2>
+                Otros Gastos y Pintura
+            </h2>
+            <table class="table table-dark table-striped  table-sm">              
+               
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>fecha</th>
+                        <th>cantidad</th>
+                        <th>valorTotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="i: ${otrosGastos}">
+                        <td th:text="${i.tipo}"></td>
+                        <td th:text="${i.fechaPedido}"></td>
+                        <td th:text="${i.cantidad}"></td>      
+                        <td th:text="${i.valorTotal}"></td>                       
+                    </tr>              
+                </tbody>
+            </table>
+            <h3 th:text="${'Otros gastos y pinturas: ' + totalPinturas}"></h3>
+            <h2>
+                Mano de obra
+            </h2>
+            <table class="table table-dark table-striped  table-sm">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Monto Pago</th>
+                        <th>Pintor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="i: ${manoDeObra}">
+                        <td th:text="${i.fechaDePago}"></td>
+                        <td th:text="${i.montoDePago}"></td>
+                        <td th:text="${i.pintor}"></td>                        
+                    </tr>              
+                </tbody>
+            </table>
+            <h3 th:text="${'Total mano de obra: ' + totalManoObra}"></h3>
+
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="totalMateriales">totalMateriales</label>
+                    <input id="totalMateriales" type="text" class="form-control" name="totalMateriales" th:value="${totalMateriales}"
+                        readonly />
+                </div>
+                <div class="form-group col-6">
+                    <label for="totalGastado">totalGastado</label>
+                    <input id="totalGastado" type="text" class="form-control" name="totalGastado" th:value="${totalGastado}"
+                        readonly />
+                </div>            
+            </div>
+
+
         </form>
-<!--        Integer id;-->
-<!--        String estadoContrato;-->
-<!--        String cobradoSegunFactura;-->
-<!--        LocalDate deFecha;-->
-<!--    -->
-<!--        String placa;-->
-<!--        String cliente;-->
-<!--        String numeroSiniestro;-->
-<!--        String marca;-->
-<!--        String tipoDeVehiculo;-->
-<!--        String color;-->
-<!--        LocalDate fechaIngreso;-->
-<!--        LocalDate fechaDeEntrega;-->
-<!--        String pintorEncargado;-->
-<!--        BigDecimal planificadoMateriales;-->
-<!--        BigDecimal planificadoManoDeObra;-->
-
-
-
     </div>
 </body>
 
