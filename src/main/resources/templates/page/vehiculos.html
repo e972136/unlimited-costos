@@ -59,52 +59,54 @@
             </div>
         </form>
 
-
-        <table class="table table-dark table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Placa</th>
-                    <th>Cliente</th>
-                    <th>Fecha Ingreso</th>
-                    <th>Numero Siniestro</th>
-                    <th>Aseguradora</th>
-                    <th>Detalle</th>
-                    <th>Pintor</th>
-                    <th>Accion</th>
-                </tr>
-            <tbody>
-                <tr th:each="i: ${vehiculos}">
-                    <td hidden th:text="${i.id}"></td>
-                    <td th:text="${i.placa}"></td>
-                    <td th:text="${i.cliente}"></td>
-                    <td th:text="${i.fechaIngreso}"></td>
-                    <td th:text="${i.numeroSiniestro}"></td>
-                    <td th:text="${i.aseguradora}"></td>
-                    <td th:text="${i.marca + '/' + i.anio + '/' + i.color}"></td>
-                    <td th:text="${i.pintorEncargado}"></td>
-                    <td>
-                        <a th:href="@{/vehiculo/editar/{id}(id=${i.id})}" class="btn btn-warning">editar<i
-                                class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-            </thead>
-        </table>
-        <!--                componente paginacion, no olvidar poner el bean en el principal-->
-        <div class="row">
-            <div class="col-sm-6">
-                <!--                        activar para mostrar total de registros-->
-                <!--                                        <div sd:pagination-summary=""></div>-->
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Cliente</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Numero Siniestro</th>
+                        <th>Aseguradora</th>
+                        <th>Detalle</th>
+                        <th>Pintor</th>
+                        <th>Accion</th>
+                    </tr>
+                <tbody>
+                    <tr th:each="i: ${vehiculos}">
+                        <td hidden th:text="${i.id}"></td>
+                        <td th:text="${i.placa}"></td>
+                        <td th:text="${i.cliente}"></td>
+                        <td th:text="${i.fechaIngreso}"></td>
+                        <td th:text="${i.numeroSiniestro}"></td>
+                        <td th:text="${i.aseguradora}"></td>
+                        <td th:text="${i.marca + '/' + i.anio + '/' + i.color}"></td>
+                        <td th:text="${i.pintorEncargado}"></td>
+                        <td>
+                            <a th:href="@{/vehiculo/editar/{id}(id=${i.id})}" class="btn btn-warning">editar<i
+                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                </thead>
+            </table>
+            <!--                componente paginacion, no olvidar poner el bean en el principal-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <!--                        activar para mostrar total de registros-->
+                    <!--                                        <div sd:pagination-summary=""></div>-->
+                </div>
+                <div class="col-sm-6">
+                    <nav class="pull-right">
+                        <ul class="pagination" sd:pagination="full">
+    
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <nav class="pull-right">
-                    <ul class="pagination" sd:pagination="full">
-
-                    </ul>
-                </nav>
-            </div>
+            <!--        fin paginacion-->          
         </div>
-        <!--        fin paginacion-->
+
     </div>
 </body>
 
