@@ -118,7 +118,7 @@
                           </svg>
                     </button>
         
-                    <a class="btn btn-primary btn-lg m-3 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                    <a class="btn btn-info btn-lg m-3 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -138,43 +138,38 @@
     <div class="container-fluid">
         <h3 class="text-danger" th:text="${'Acumulado L '+calculado}"> </h3>
         <h3 class="text-danger" th:text="${'Planificado L '+planificado}"> </h3>
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                    <th>fechaFactura</th>
-                    <th>numeroFacturaProveedor</th>
-                    <th>proveedor</th>
-                    <th>tipoGasto</th>
-                    <th>cantidad</th>
-                    <th>valorNominal</th>
-                    <th>impuestoGasto</th>
-                    <th>valorDelGasto</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="i: ${repuestosList}">
-                    <td th:text="${i.fechaFactura}"></td>
-                    <td th:text="${i.numeroFacturaProveedor}"></td>
-                    <td th:text="${i.proveedor}"></td>
-                    <td th:text="${i.tipoGasto}"></td>
-                    <td th:text="${i.cantidad}"></td>
-                    <td th:text="${i.valorNominal}"></td>
-                    <td th:text="${i.impuestoGasto}"></td>
-                    <td th:text="${i.valorDelGasto}"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>fechaFactura</th>
+                        <th>numeroFacturaProveedor</th>
+                        <th>proveedor</th>
+                        <th>tipoGasto</th>
+                        <th>cantidad</th>
+                        <th>valorNominal</th>
+                        <th>impuestoGasto</th>
+                        <th>valorDelGasto</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="i: ${repuestosList}">
+                        <td th:text="${i.fechaFactura}"></td>
+                        <td th:text="${i.numeroFacturaProveedor}"></td>
+                        <td th:text="${i.proveedor}"></td>
+                        <td th:text="${i.tipoGasto}"></td>
+                        <td th:text="${i.cantidad}"></td>
+                        <td th:text="${i.valorNominal}"></td>
+                        <td th:text="${i.impuestoGasto}"></td>
+                        <td th:text="${i.valorDelGasto}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
-    <!--            LocalDate fechaFactura;        -->
-    <!--            String numeroFacturaProveedor;       -->
-    <!--            String proveedor;-->
-    <!--            String tipoGasto;            -->
-    <!--            Double cantidad;            -->
-    <!--            BigDecimal valorNominal;-->
-    <!--            BigDecimal impuestoGasto;-->
-    <!--            BigDecimal valorDelGasto;-->
-    <!--        -->
 </body>
 
 </html>
