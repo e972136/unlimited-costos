@@ -120,6 +120,16 @@ public class VehiculosController {
         return mav;
     }
 
+    @PostMapping("/actualizar/{id}")
+    public ModelAndView actualizarVehiculo(
+            @PathVariable Integer id,
+            @ModelAttribute VehiculoRequest vehiculo
+    ){
+        ModelAndView mav =  new ModelAndView("redirect:/vehiculo/editar/"+id);
+        Optional<Transaccion> vehiculoBD = transaccionService.save(vehiculo);
+        return mav;
+    }
+
     @GetMapping("control-costos/{id}")
     public ModelAndView controlCostos(
             @PathVariable Integer id

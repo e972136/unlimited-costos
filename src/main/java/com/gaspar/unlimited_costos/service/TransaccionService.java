@@ -44,7 +44,7 @@ public class TransaccionService {
 
     public Optional<Transaccion> save(VehiculoRequest v) {
         Transaccion transaccion =Transaccion.of(
-                null,
+                v.getId(),
                 "",
                 null,
                 v.getPlaca(),

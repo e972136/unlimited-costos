@@ -56,7 +56,11 @@ public class ManoDeObraController {
 
 
         ModelAndView mav = new ModelAndView("./page/cargar-mano-de-obra");
-        mav.addObject("solicitud", new ManoDeObra());
+
+        ManoDeObra manoDeObra = new ManoDeObra();
+        manoDeObra.setPintor(vehiculo.getPintorEncargado());
+
+        mav.addObject("solicitud", manoDeObra);
         mav.addObject("vehiculo", vehiculo);
         mav.addObject("manoDeObraList", manoDeObraList);
         mav.addObject("calculado",cambioFormatoAEstandar(calculado.toString()));
