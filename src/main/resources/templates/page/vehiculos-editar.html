@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
@@ -59,18 +61,18 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="numeroSiniestro">numeroSiniestro</label>
                     <input id="numeroSiniestro" type="text" class="form-control patito" name="numeroSiniestro"
                         th:field="*{numeroSiniestro}" placeholder="numeroSiniestro" onchange="cambioColor(this)" required />
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="aseguradora">aseguradora</label>
                     <input id="aseguradora" type="text" class="form-control patito" name="aseguradora" th:field="*{aseguradora}"
                         placeholder="aseguradora" onchange="cambioColor(this)" required />
     
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="fechaIngreso">fechaIngreso</label>
                     <input id="fechaIngreso" type="date" class="form-control patito" name="fechaIngreso"
                         th:field="*{fechaIngreso}" placeholder="fechaIngreso" onchange="cambioColor(this)" required />
@@ -78,12 +80,12 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-lg-6  col-sm-12">
                     <label for="cliente">cliente</label>
                     <input id="cliente" type="text" class="form-control patito" name="cliente" th:field="*{cliente}"
                         placeholder="cliente"  onchange="cambioColor(this)" required />
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-lg-6  col-sm-12">
                     <label for="placa">placa</label>
                     <input id="placa" type="text" class="form-control patito" name="placa" th:field="*{placa}"
                         placeholder="placa" onchange="cambioColor(this)" required />
@@ -94,28 +96,28 @@
             <div class="form-row">
 
 
-                <div class="form-group col-3">
+                <div class="form-group col-lg-3  col-sm-12">
                     <label for="marca">marca</label>
                     <input id="marca" type="text" class="form-control patito" name="marca" th:field="*{marca}"
                         placeholder="marca" onchange="cambioColor(this)" required />
 
                 </div>
 
-                <div class="form-group col-2">
+                <div class="form-group col-lg-2  col-sm-12">
                     <label for="anio">anio</label>
                     <input id="anio" type="text" class="form-control patito" name="anio" th:field="*{anio}" placeholder="anio"
                     onchange="cambioColor(this)" required />
 
                 </div>
 
-                <div class="form-group col-3">
+                <div class="form-group col-lg-3  col-sm-12">
                     <label for="color">color</label>
                     <input id="color" type="text" class="form-control patito" name="color" th:field="*{color}"
                         placeholder="color" onchange="cambioColor(this)" required />
 
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="tipoDeVehiculo">tipoDeVehiculo</label>
                     <input id="tipoDeVehiculo" type="text" class="form-control patito" name="tipoDeVehiculo"
                         th:field="*{tipoDeVehiculo}" placeholder="tipoDeVehiculo" onchange="cambioColor(this)" required />
@@ -124,7 +126,7 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="planificadoManoDeObra">planificadoManoDeObra</label>
                     <input id="planificadoManoDeObra" type="number" class="form-control patito" name="planificadoManoDeObra"
                         th:field="*{planificadoManoDeObra}" placeholder="planificadoManoDeObra" 
@@ -133,7 +135,7 @@
 
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="planificadoMateriales">planificadoMateriales</label>
                     <input id="planificadoMateriales" type="number" class="form-control patito" name="planificadoMateriales"
                         th:field="*{planificadoMateriales}" placeholder="planificadoMateriales" 
@@ -142,7 +144,7 @@
 
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col-lg-4  col-sm-12">
                     <label for="pintorEncargado">pintorEncargado</label>
                     <input id="pintorEncargado" type="text" class="form-control patito" name="pintorEncargado"
                         th:field="*{pintorEncargado}" placeholder="pintorEncargado" onchange="cambioColor(this)" required />
@@ -163,37 +165,39 @@
 
 
 
-            <div class="form-row col-12">
+            <div class="form-row">
+                <div class="table-responsive">
+                    <table class="table table-striped  table-sm col-lg-12 col-sm-6">
+                        <tbody>
+                            <tr>
+                                <td class="col-6">
+                                    <a class="btn btn-primary btn-lg m-1 disabled patito-ancho" th:href="@{/vehiculo/ingreso}"  >solicitud materiales</a>
+                                </td>
+                                <td class="col-6">
+                                    <a class="btn btn-primary btn-lg m-1 patito-ancho"
+                                        th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud repuestos</a>
+                                </td>                        
+                            </tr>
+                            <tr>
+                                <td class="col-6">
+                                    <a class="btn btn-primary btn-lg m-1 patito-ancho" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">agregar otros materiales</a>
+                                </td>
+                                <td class="col-6">
+                                    <a class="btn btn-primary btn-lg m-1 patito-ancho " th:href="@{/repuestos/cargar/{id}(id=${vehiculo.id})}">Compra Repuestos</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">
+                                    <a class="btn btn-primary btn-lg m-1 patito-ancho" th:href="@{/mano-de-obra/cargar/{id}(id=${vehiculo.id})}">Cargar mano de obra</a>
+                                </td>
+                                <td class="col-6">
+                                    <a class="btn btn-primary btn-lg m-1 patito-ancho" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <table class="table table-striped  table-sm">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a class="btn btn-primary btn-lg m-1 disabled patito-ancho" th:href="@{/vehiculo/ingreso}"  >solicitud materiales</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-primary btn-lg m-1 patito-ancho"
-                                    th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud repuestos</a>
-                            </td>                        
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="btn btn-primary btn-lg m-1 patito-ancho" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">agregar otros materiales</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-primary btn-lg m-1 patito-ancho " th:href="@{/repuestos/cargar/{id}(id=${vehiculo.id})}">Compra Repuestos</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="btn btn-primary btn-lg m-1 patito-ancho" th:href="@{/mano-de-obra/cargar/{id}(id=${vehiculo.id})}">Cargar mano de obra</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-primary btn-lg m-1 patito-ancho" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
 

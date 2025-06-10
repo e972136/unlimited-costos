@@ -2,6 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -54,24 +57,24 @@
     
                     <div class="form-row">
                         <input th:field="*{idTransaccion}" hidden>
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3  col-sm-12">
                             <label for="tipo">Descripcion</label>
                             <input id="tipo" type="text" class="form-control   patito" name="tipo" th:field="*{tipo}"
                                 placeholder="tipo" required />
                         </div>           
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3  col-sm-12">
                             <label for="cantidad">cantidad</label>
                             <input id="cantidad" type="number" class="form-control   patito" name="cantidad" th:field="*{cantidad}"
                                 placeholder="cantidad"
                                 step="0.01" min="0"
                                  required />
                         </div>     
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3  col-sm-12">
                             <label for="fechaPedido">fechaPedido</label>
                             <input id="fechaPedido" type="date" class="form-control   patito" name="fechaPedido" th:field="*{fechaPedido}"
                                 placeholder="fechaPedido" required />
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3  col-sm-12">
                             <label for="valorTotal">valorTotal</label>
                             <input id="valorTotal" type="number" class="form-control  patito"  name="valorTotal" th:field="*{valorTotal}"
                                 placeholder="valorTotal" 
@@ -86,7 +89,7 @@
                           </svg>
                     </button>
         
-                    <a class="btn btn-primary btn-lg mr-1 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                    <a class="btn btn-primary btn-lg m-3 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

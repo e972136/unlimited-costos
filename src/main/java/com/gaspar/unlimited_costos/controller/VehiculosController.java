@@ -27,6 +27,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @Controller
 @RequestMapping("/vehiculo")
 public class VehiculosController {

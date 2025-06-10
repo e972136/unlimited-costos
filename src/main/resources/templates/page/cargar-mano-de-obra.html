@@ -2,6 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -52,19 +55,19 @@
                 <form th:action="@{/mano-de-obra/guardar/{idTransaccion}(idTransaccion=${vehiculo.id})}" method="POST" th:object="${solicitud}">
     
                     <div class="form-row">
-                        <div class="form-group col-4">
+                        <div class="form-group col-lg-4 col-sm-12">
                             <label for="fechaDePago">fechaDePago</label>
                             <input id="fechaDePago" type="date" class="form-control  patito" name="tipoGasto" th:field="*{fechaDePago}"
                                 placeholder="fechaDePago" required />
                         </div>           
-                        <div class="form-group col-4">
+                        <div class="form-group col-lg-4 col-sm-12">
                             <label for="montoDePago">montoDePago</label>
                             <input id="montoDePago" type="number" class="form-control  patito" name="montoDePago" th:field="*{montoDePago}"
                                 placeholder="montoDePago" 
                                 step="0.01" min="0"
                                 required />
                         </div>
-                        <div class="form-group col-4">
+                        <div class="form-group col-lg-4 col-sm-12">
                             <label for="pintor">pintor</label>
                             <input id="pintor" type="text" class="form-control  patito" name="pintor" th:field="*{pintor}"
                                 placeholder="pintor" required />
@@ -80,7 +83,7 @@
                           </svg>
                     </button>
         
-                    <a class="btn btn-primary btn-lg mr-1 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                    <a class="btn btn-primary btn-lg m-3 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

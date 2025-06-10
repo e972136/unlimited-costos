@@ -15,6 +15,7 @@ import java.util.List;
 
 import static com.gaspar.unlimited_costos.util.MetodosGenerales.cambioFormatoAEstandar;
 
+@CrossOrigin
 @Controller
 @RequestMapping("/solicitud-repuesto")
 public class SolicitudRepuestosController {

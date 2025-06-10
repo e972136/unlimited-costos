@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -54,18 +57,18 @@
                 <form th:action="@{/repuestos/guardar/{idTransaccion}(idTransaccion=${vehiculo.id})}" method="POST"  th:object="${solicitud}">
 
                     <div class="form-row">
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3 col-sm-12">
                             <label for="fechaFactura">fechaFactura</label>
                             <input id="fechaFactura" type="date" class="form-control  patito" name="fechaFactura"
                                 th:field="*{fechaFactura}" placeholder="fechaFactura" required />
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3 col-sm-12">
                             <label for="numeroFacturaProveedor">numeroFacturaProveedor</label>
                             <input id="numeroFacturaProveedor" type="text" class="form-control  patito"
                                 name="numeroFacturaProveedor" th:field="*{numeroFacturaProveedor}"
                                 placeholder="numeroFacturaProveedor" required />
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-lg-6 col-sm-12">
                             <label for="proveedor">proveedor</label>
                             <input id="proveedor" type="text" class="form-control  patito" name="proveedor"
                                 th:field="*{proveedor}" placeholder="proveedor" required />
@@ -73,7 +76,7 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-lg-12 col-sm-12">
                             <label for="tipoGasto">tipoGasto</label>
                             <select th:field="*{tipoGasto}" class="form-control color-fondo  patito" name=""
                                 id="tipoGasto" th:required="true" onchange="cambioColor(this)">
@@ -86,22 +89,22 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3 col-sm-12">
                             <label for="cantidad">cantidad</label>
                             <input id="cantidad" type="number" class="form-control  patito" name="cantidad"
                                 th:field="*{cantidad}" placeholder="cantidad" step="0.01" min="0" required />
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3 col-sm-12">
                             <label for="valorNominal">valorNominal</label>
                             <input id="valorNominal" type="number" class="form-control  patito" name="valorNominal"
                                 th:field="*{valorNominal}" placeholder="valorNominal" step="0.01" min="0" required />
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3 col-sm-12">
                             <label for="impuestoGasto">impuestoGasto</label>
                             <input id="impuestoGasto" type="number" class="form-control  patito" name="impuestoGasto"
                                 th:field="*{impuestoGasto}" placeholder="impuestoGasto" step="0.01" min="0" required />
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-lg-3 col-sm-12">
                             <label for="valorDelGasto">valorDelGasto</label>
                             <input id="valorDelGasto" type="number" class="form-control  patito" name="valorDelGasto"
                                 th:field="*{valorDelGasto}" placeholder="valorDelGasto" step="0.01" min="0" required />
@@ -115,7 +118,7 @@
                           </svg>
                     </button>
         
-                    <a class="btn btn-primary btn-lg mr-1 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                    <a class="btn btn-primary btn-lg m-3 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
