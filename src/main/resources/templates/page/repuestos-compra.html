@@ -77,14 +77,9 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-12 col-sm-12">
-                            <label for="tipoGasto">tipoGasto</label>
-                            <select th:field="*{tipoGasto}" class="form-control color-fondo  patito" name=""
-                                id="tipoGasto" th:required="true" onchange="cambioColor(this)">
-                                <option value="">Seleccione tipo de gasto</option>
-                                <option th:each="option : ${solicitudlist}" th:value="${option.id}"
-                                    th:text="${option.descripcion}">
-                                </option>
-                            </select>
+                            <label for="tipoGasto">Gasto</label>
+                            <input id="tipoGasto" type="text" class="form-control  patito" name="tipoGasto"
+                                th:field="*{tipoGasto}" placeholder="Gasto" required />                           
                         </div>
                     </div>
 
