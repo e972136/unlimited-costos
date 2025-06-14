@@ -19,6 +19,9 @@ public interface ManoDeObraRepository extends JpaRepository<ManoDeObra,Integer> 
     )
     List<ManoDeObraReporte> findAllByYearMonto(@Param("yy") Double yy, @Param("mm") Double mm);
 
+    @Query(value = "select distinct pintor from mano_de_obra order by pintor", nativeQuery = true)
+    List<String> findAllPintores();
+
     /*
     update mano_de_obra
 set pintor = tabla_b.pintor_encargado

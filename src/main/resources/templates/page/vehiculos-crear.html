@@ -58,7 +58,12 @@
                 <div class="form-group col-lg-4  col-sm-12">
                     <label for="aseguradora">aseguradora</label>
                     <input id="aseguradora" type="text" class="form-control patito" name="aseguradora" th:field="*{aseguradora}"
-                        placeholder="aseguradora" required />
+                        placeholder="aseguradora" list="aseguradoras" required />
+ 
+                        <datalist id="aseguradoras">
+                            <option th:each="option : ${aseguradoras}" th:value="${option}" th:text="${option}">
+                        </datalist>                       
+    
     
                 </div>
                 <div class="form-group col-lg-4  col-sm-12">
@@ -136,8 +141,12 @@
                 <div class="form-group col-lg-4  col-sm-12">
                     <label for="pintorEncargado">pintor Encargado</label>
                     <input id="pintorEncargado" type="text" class="form-control patito" name="pintorEncargado" th:field="*{pintorEncargado}"
-                        placeholder="pintorEncargado" required />
+                        placeholder="pintorEncargado" list="pintores" required />
     
+
+                        <datalist id="pintores">
+                            <option th:each="option : ${pintores}" th:value="${option}" th:text="${option}">
+                        </datalist>  
                 </div>
             </div>
 

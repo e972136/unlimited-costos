@@ -22,4 +22,8 @@ public class PinturaService {
     public Pintura save(Pintura solicitud) {
         return otrosMaterialesRepository.save(solicitud);
     }
+
+    public List<String> findAllTipo() {
+        return otrosMaterialesRepository.findDistinctByTipo();
+    }
 }

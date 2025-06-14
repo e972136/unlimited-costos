@@ -28,4 +28,12 @@ public class RepuestosService {
     public Repuestos save(Repuestos solicitud) {
         return repuestosRepository.save(solicitud);
     }
+
+    public List<String> findAllProveedores() {
+        return repuestosRepository.findAllProveedores();
+    }
+
+    public List<String> findAllRepuestos() {
+        return repuestosRepository.findAllRepuestos();
+    }
 }

@@ -76,7 +76,12 @@ public class VehiculosController {
     )
     {
         ModelAndView mav = new ModelAndView("./page/vehiculos-crear");
+        List<String> pintores = manoDeObraService.findAllPintores();
+        List<String> aseguradoras = transaccionService.findAllAseguradoras();
+
         mav.addObject("vehiculo", new VehiculoRequest());
+        mav.addObject("aseguradoras", aseguradoras);
+        mav.addObject("pintores", pintores);
         return mav;
     }
 
@@ -117,7 +122,12 @@ public class VehiculosController {
                 )
         ).get();
 
+        List<String> aseguradoras = transaccionService.findAllAseguradoras();
+        List<String> pintores = manoDeObraService.findAllPintores();
+
         mav.addObject("vehiculo", vehiculo);
+        mav.addObject("pintores", pintores);
+        mav.addObject("aseguradoras", aseguradoras);
         return mav;
     }
 

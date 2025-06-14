@@ -29,4 +29,8 @@ public class ManoDeObraService {
         Double month = Double.parseDouble(split[1]);
         return manoDeObraRepository.findAllByYearMonto(year,month);
     }
+
+    public List<String> findAllPintores() {
+        return manoDeObraRepository.findAllPintores();
+    }
 }

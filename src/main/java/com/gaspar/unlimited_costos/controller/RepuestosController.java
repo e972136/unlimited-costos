@@ -63,9 +63,14 @@ public class RepuestosController {
                 new ComboItem(e.getTipoGasto(), e.getTipoGasto())
         ).toList();
 
+        List<String> proveedores = repuestosService.findAllProveedores();
+        List<String> repuestos = repuestosService.findAllRepuestos();
+
         ModelAndView mav = new ModelAndView("./page/repuestos-compra");
 
         mav.addObject("vehiculo", vehiculo);
+        mav.addObject("proveedores", proveedores);
+        mav.addObject("repuestos", repuestos);
         mav.addObject("solicitud", new Repuestos());
         mav.addObject("repuestosList", repuestosList);
         mav.addObject("solicitudlist", solicitudlist);

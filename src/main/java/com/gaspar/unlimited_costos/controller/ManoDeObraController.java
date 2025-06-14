@@ -60,7 +60,10 @@ public class ManoDeObraController {
         ManoDeObra manoDeObra = new ManoDeObra();
         manoDeObra.setPintor(vehiculo.getPintorEncargado());
 
+        List<String> pintores = manoDeObraService.findAllPintores();
+
         mav.addObject("solicitud", manoDeObra);
+        mav.addObject("pintores", pintores);
         mav.addObject("vehiculo", vehiculo);
         mav.addObject("manoDeObraList", manoDeObraList);
         mav.addObject("calculado",cambioFormatoAEstandar(calculado.toString()));

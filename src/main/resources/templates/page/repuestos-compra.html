@@ -71,7 +71,10 @@
                         <div class="form-group col-lg-6 col-sm-12">
                             <label for="proveedor">proveedor</label>
                             <input id="proveedor" type="text" class="form-control  patito" name="proveedor"
-                                th:field="*{proveedor}" placeholder="proveedor" required />
+                                th:field="*{proveedor}" placeholder="proveedor" list="proveedores_" required />
+                            <datalist id="proveedores_">
+                                <option th:each="option : ${proveedores}" th:value="${option}" th:text="${option}" >
+                            </datalist>
                         </div>
                     </div>
 
@@ -79,8 +82,12 @@
                         <div class="form-group col-lg-12 col-sm-12">
                             <label for="tipoGasto">Gasto</label>
                             <input id="tipoGasto" type="text" class="form-control  patito" name="tipoGasto"
-                                th:field="*{tipoGasto}" placeholder="Gasto" required />                           
+                                th:field="*{tipoGasto}" placeholder="Gasto" list="repuestos" required />                           
                         </div>
+                        <datalist id="repuestos">
+                            <option th:each="option : ${repuestos}" th:value="${option}" th:text="${option}" >
+                        </datalist>
+                        
                     </div>
 
                     <div class="form-row">

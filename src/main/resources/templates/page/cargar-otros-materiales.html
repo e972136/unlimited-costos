@@ -57,24 +57,31 @@
     
                     <div class="form-row">
                         <input th:field="*{idTransaccion}" hidden>
-                        <div class="form-group col-lg-3  col-sm-12">
+                        <div class="form-group col-lg-6  col-sm-12">
                             <label for="tipo">Descripcion</label>
                             <input id="tipo" type="text" class="form-control   patito" name="tipo" th:field="*{tipo}"
-                                placeholder="tipo" required />
+                                placeholder="tipo" list="tipos" required />
+
+                                
+                        <datalist id="tipos">
+                            <option th:each="option : ${tipos}" th:value="${option}" th:text="${option}">
+                        </datalist>  
+
+                                
                         </div>           
-                        <div class="form-group col-lg-3  col-sm-12">
+                        <div class="form-group col-lg-2  col-sm-12">
                             <label for="cantidad">cantidad</label>
                             <input id="cantidad" type="number" class="form-control   patito" name="cantidad" th:field="*{cantidad}"
                                 placeholder="cantidad"
                                 step="0.01" min="0"
                                  required />
                         </div>     
-                        <div class="form-group col-lg-3  col-sm-12">
+                        <div class="form-group col-lg-2  col-sm-12">
                             <label for="fechaPedido">fechaPedido</label>
                             <input id="fechaPedido" type="date" class="form-control   patito" name="fechaPedido" th:field="*{fechaPedido}"
                                 placeholder="fechaPedido" required />
                         </div>
-                        <div class="form-group col-lg-3  col-sm-12">
+                        <div class="form-group col-lg-2  col-sm-12">
                             <label for="valorTotal">valorTotal</label>
                             <input id="valorTotal" type="number" class="form-control  patito"  name="valorTotal" th:field="*{valorTotal}"
                                 placeholder="valorTotal" 

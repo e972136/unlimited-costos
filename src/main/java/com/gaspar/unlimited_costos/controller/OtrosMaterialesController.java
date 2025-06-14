@@ -53,8 +53,12 @@ public class OtrosMaterialesController {
         List<Pintura> otrosMaterialesList =  otrosMaterialesService.findAllByIdTransaccion(idTransaccion);
         BigDecimal calculado = otrosMaterialesList.stream().map(Pintura::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
 
+        List<String> tipos = otrosMaterialesService.findAllTipo();
+
+
         ModelAndView mav = new ModelAndView("./page/cargar-otros-materiales");
         mav.addObject("vehiculo", vehiculo);
+        mav.addObject("tipos", tipos);
         mav.addObject("solicitud", new Pintura());
         mav.addObject("otrosMaterialesList", otrosMaterialesList);
         mav.addObject("calculado",cambioFormatoAEstandar(calculado.toString()));

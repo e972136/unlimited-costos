@@ -65,4 +65,8 @@ public class TransaccionService {
         );
         return Optional.of(transaccionRepository.save(transaccion));
     }
+
+    public List<String> findAllAseguradoras() {
+        return transaccionRepository.findAllAseguradoras();
+    }
 }
