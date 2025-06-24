@@ -5,6 +5,7 @@ import com.gaspar.unlimited_costos.repository.PinturaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PinturaService {
@@ -25,5 +26,11 @@ public class PinturaService {
 
     public List<String> findAllTipo() {
         return otrosMaterialesRepository.findDistinctByTipo();
+    }
+
+    public Pintura deleteRegistro(Integer id) {
+        Pintura byId = otrosMaterialesRepository.findById(id).get();
+        otrosMaterialesRepository.delete(byId);
+        return byId;
     }
 }

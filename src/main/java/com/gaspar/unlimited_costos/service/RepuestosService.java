@@ -5,6 +5,7 @@ import com.gaspar.unlimited_costos.repository.RepuestosRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RepuestosService {
@@ -35,5 +36,11 @@ public class RepuestosService {
 
     public List<String> findAllRepuestos() {
         return repuestosRepository.findAllRepuestos();
+    }
+
+    public Repuestos deleteRegistro(Integer id) {
+        Repuestos repuestos = repuestosRepository.findById(id).get();
+        repuestosRepository.delete(repuestos);
+        return repuestos;
     }
 }

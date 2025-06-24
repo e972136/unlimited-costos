@@ -90,4 +90,13 @@ public class RepuestosController {
         Repuestos bd = repuestosService.save(solicitud);
         return new ModelAndView("redirect:/repuestos/cargar/"+idTransaccion);
     }
+
+
+    @GetMapping("/borrar")
+    public ModelAndView eliminarRepuesto(
+            @RequestParam Integer id
+    ){
+        Repuestos bd = repuestosService.deleteRegistro(id);
+        return new ModelAndView("redirect:/repuestos/cargar/"+bd.getIdTransaccion());
+    }
 }

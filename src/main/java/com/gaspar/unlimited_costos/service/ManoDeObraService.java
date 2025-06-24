@@ -2,6 +2,7 @@ package com.gaspar.unlimited_costos.service;
 
 import com.gaspar.unlimited_costos.dto.ManoDeObraReporte;
 import com.gaspar.unlimited_costos.entity.ManoDeObra;
+
 import com.gaspar.unlimited_costos.repository.ManoDeObraRepository;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,11 @@ public class ManoDeObraService {
 
     public List<String> findAllPintores() {
         return manoDeObraRepository.findAllPintores();
+    }
+
+    public ManoDeObra deleteRegistro(Integer id) {
+        ManoDeObra manoDeObra = manoDeObraRepository.findById(id).get();
+        manoDeObraRepository.delete(manoDeObra);
+        return manoDeObra;
     }
 }

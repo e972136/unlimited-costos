@@ -77,4 +77,11 @@ public class OtrosMaterialesController {
         return new ModelAndView("redirect:/otros-materiales/cargar/"+idTransaccion);
     }
 
+    @GetMapping("/borrar")
+    public ModelAndView eliminarRepuesto(
+            @RequestParam Integer id
+    ){
+        Pintura bd =  otrosMaterialesService.deleteRegistro(id);
+        return new ModelAndView("redirect:/otros-materiales/cargar/"+bd.getIdTransaccion());
+    }
 }

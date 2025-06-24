@@ -82,4 +82,12 @@ public class ManoDeObraController {
         ManoDeObra bd = manoDeObraService.save(solicitud);
         return new ModelAndView("redirect:/mano-de-obra/cargar/"+idTransaccion);
     }
+
+    @GetMapping("/borrar")
+    public ModelAndView eliminarRepuesto(
+            @RequestParam Integer id
+    ){
+        ManoDeObra bd = manoDeObraService.deleteRegistro(id);
+        return new ModelAndView("redirect:/repuestos/cargar/"+bd.getIdTransaccion());
+    }
 }
