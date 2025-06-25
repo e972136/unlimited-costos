@@ -18,30 +18,8 @@
     </head>
     <title>Cargar otros materiales</title>
 <body>
-    <!-- Menu-->
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" th:href="@{/vehiculo/listado}">Taller Unlimited SPS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Links -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/listado}">Listado</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+<header th:replace="layout/layout ::header"></header>
+
     
     <div class="container">
         <div class="card">
