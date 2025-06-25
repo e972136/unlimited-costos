@@ -131,7 +131,7 @@
                     <td th:text="${i.fechaPedido}"></td>                    
                     <td th:text="${i.valorTotal}"></td>
                     <td>
-                        <a th:href="@{/otros-materiales/borrar(id=${i.id})}" class="btn btn-danger patito-sm">
+                        <a th:href="@{/otros-materiales/borrar(id=${i.id})}" class="btn btn-danger patito-sm"  onclick="return confirm('Seguro de borrar');">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                 <path

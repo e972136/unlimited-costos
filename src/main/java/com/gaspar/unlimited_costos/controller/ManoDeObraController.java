@@ -88,6 +88,6 @@ public class ManoDeObraController {
             @RequestParam Integer id
     ){
         ManoDeObra bd = manoDeObraService.deleteRegistro(id);
-        return new ModelAndView("redirect:/repuestos/cargar/"+bd.getIdTransaccion());
+        return new ModelAndView("redirect:/mano-de-obra/cargar/"+bd.getIdTransaccion());
     }
 }
