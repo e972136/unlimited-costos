@@ -6,6 +6,7 @@
     <title>UNLIMITED</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link th:href="@{/style.css}" rel="stylesheet" />
 </head>
 <body>
 <!-- https://github.com/e972136/Thymeleaf-Proyects/blob/main/tecnologiaAvanza-control-empleados/src/main/resources/templates/layout/layout.html -->
@@ -22,13 +23,13 @@
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/listado}">Listado</a>
+                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-menu" th:href="@{/vehiculo/listado}">Listado</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
+                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-menu" th:href="@{/vehiculo/ingreso}">Agregar Vehiculo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-ancho" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
+                        <a class="btn btn-primary btn-lg mr-1 mt-1 patito-menu" th:href="@{/vehiculo/resumen-gastos}">Resumen Gastos</a>
                     </li>
                 </ul>
             </div>

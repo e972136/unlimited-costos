@@ -8,6 +8,11 @@
     width: 300px;
 }
 
+.patito-menu{
+    height: 100%;
+    width: 250px;
+}
+
 .patito{
     background-color: #f2faf4;
     border: 3px solid #205e04; 

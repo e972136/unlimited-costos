@@ -13,14 +13,15 @@
 
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-    <link th:href="@{/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 </head>
 <title>Vehiculos</title>
 
 <body>
-<header th:replace="layout/layout ::header"></header>
+<!--<header th:replace="layout/layout ::header"></header>-->
+<header th:replace="~{layout/layout ::header}"></header>
 
 
 

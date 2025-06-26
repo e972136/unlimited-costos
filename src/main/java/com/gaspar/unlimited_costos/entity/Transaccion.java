@@ -23,9 +23,12 @@ public class Transaccion {
     Integer id;
     String cobradoSegunFactura;
 
+
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate deFecha;
+
+    BigDecimal valorFacturado;
 
     String placa;
     String cliente;
