@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+</head>
+<title>Ingreso Vehiculo</title>
+
+<body>
+<header th:replace="~{layout/layout ::header}"></header>
+
+    <div class="container mt-3">
+
+        <form th:action="@{/vehiculo/actualizar/{id}(id=${vehiculo.id})}" method="POST" th:object="${vehiculo}">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2 class="card-title ">
+                        FACTURACION DE VEHICULOS
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-row" hidden>
+                        <div class="form-group col-6">
+                            <label for="id">id</label>
+                            <input id="id" type="text" class="form-control patito" name="id" th:field="*{id}" placeholder="id"
+                                required />
+        
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group col-lg-6  col-sm-12">
+                            <label for="cliente">cliente</label>
+                            <input id="cliente" type="text" class="form-control patito" name="cliente" th:field="*{cliente}"
+                                placeholder="cliente" readonly onchange="cambioColor(this)" required />
+                        </div>
+                        <div class="form-group col-lg-6  col-sm-12">
+                            <label for="placa">placa</label>
+                            <input id="placa" type="text" class="form-control patito" name="placa" th:field="*{placa}"
+                                placeholder="placa" readonly onchange="cambioColor(this)" required />
+        
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+        
+        
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="cobradoSegunFactura">cobradoSegunFactura</label>
+                            <input id="cobradoSegunFactura" type="text" class="form-control patito" name="cobradoSegunFactura" th:field="*{cobradoSegunFactura}"
+                                placeholder="cobradoSegunFactura" onchange="cambioColor(this)" required />
+        
+                        </div>
+        
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="deFecha">Fecha</label>
+                            <input id="deFecha" type="date" class="form-control patito" name="deFecha " th:field="*{deFecha}" placeholder="deFecha año"
+                            onchange="cambioColor(this)" required />
+                        </div>
+        
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="valorFacturado">valorFacturado</label>
+                            <input id="valorFacturado" type="number" class="form-control patito" name="valorFacturado" th:field="*{valorFacturado}"
+                                placeholder="valorFacturado" onchange="cambioColor(this)" step="0.01" min="0" required />
+        
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success btn-lg patito-ancho">Guardar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                            <path d="M11 2H9v3h2z"/>
+                            <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                          </svg>
+                    </button>
+                    <a class="btn btn-info btn-lg m-3 patito-ancho" th:href="@{/vehiculo/editar/{idTransaccion}(idTransaccion=${vehiculo.id})}">Regresar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5m-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+                      </svg>             
+                      </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+<script th:inline="javascript">
+    function cambioColor(este) {       
+         este.style.backgroundColor = "#fcba03";
+    }
+</script>    
+</body>
+
+</html>

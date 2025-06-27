@@ -23,6 +23,7 @@ import static java.util.Objects.isNull;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -141,6 +142,25 @@ public class VehiculosController {
         return mav;
     }
 
+    @GetMapping("/facturar/{id}")
+    public ModelAndView facturarVehiculo(
+            @PathVariable Integer id
+    ){
+        ModelAndView mav = new ModelAndView("./page/vehiculos-facturar");
+        VehiculoFacturar vehiculo = transaccionService.findById(id).map(
+                i-> new VehiculoFacturar(
+                        i.getId(),
+                        i.getCliente(),
+                        i.getPlaca(),
+                        i.getCobradoSegunFactura(),
+                        i.getDeFecha(),
+                        i.getValorFacturado()
+                )
+        ).get();
+        mav.addObject("vehiculo", vehiculo);
+        return mav;
+    }
+
     @GetMapping("control-costos/{id}")
     public ModelAndView controlCostos(
             @PathVariable Integer id
@@ -242,6 +262,15 @@ public class VehiculosController {
         mav.addObject("totalMes", cambioFormatoAEstandar(totalMes[0].toString()));
         return mav;
     }
+
+    record VehiculoFacturar(
+            Integer id,
+            String cliente,
+            String placa,
+            String cobradoSegunFactura,
+            LocalDate deFecha,
+            BigDecimal valorFacturado
+    ){}
 
     record ManoObraMensual(
             String pintor,

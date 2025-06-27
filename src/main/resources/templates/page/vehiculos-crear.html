@@ -20,122 +20,130 @@
 <body>
 <header th:replace="~{layout/layout ::header}"></header>
 
-       <div class="container">
-           <h2>
-            INTRODUCCION DE VEHICULO
-           </h2>
+       <div class="container mt-3">
+
         <form th:action="@{/vehiculo/ingreso}" method="POST" th:object="${vehiculo}">
-            <div class="form-row">
-                <div class="form-group col-lg-4 col-sm-12">
-                    <label for="numeroSiniestro">numero Siniestro</label>
-                    <input id="numeroSiniestro" type="text" class="form-control patito" name="numeroSiniestro" th:field="*{numeroSiniestro}"
-                        placeholder="numeroSiniestro" required />
-    
-                </div>
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="aseguradora">aseguradora</label>
-                    <input id="aseguradora" type="text" class="form-control patito" name="aseguradora" th:field="*{aseguradora}"
-                        placeholder="aseguradora" list="aseguradoras" required />
- 
-                        <datalist id="aseguradoras">
-                            <option th:each="option : ${aseguradoras}" th:value="${option}" th:text="${option}">
-                        </datalist>                       
-    
-    
-                </div>
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="fechaIngreso">fecha Ingreso</label>
-                    <input id="fechaIngreso" type="date" class="form-control patito" name="fechaIngreso" th:field="*{fechaIngreso}"
-                        placeholder="fechaIngreso" required />
-                </div>
-            </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            INTRODUCCION DE VEHICULO
+                           </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-lg-4 col-sm-12">
+                                <label for="numeroSiniestro">numero Siniestro</label>
+                                <input id="numeroSiniestro" type="text" class="form-control patito" name="numeroSiniestro" th:field="*{numeroSiniestro}"
+                                    placeholder="numeroSiniestro" required />
+                
+                            </div>
+                            <div class="form-group col-lg-4  col-sm-12">
+                                <label for="aseguradora">aseguradora</label>
+                                <input id="aseguradora" type="text" class="form-control patito" name="aseguradora" th:field="*{aseguradora}"
+                                    placeholder="aseguradora" list="aseguradoras" required />
+             
+                                    <datalist id="aseguradoras">
+                                        <option th:each="option : ${aseguradoras}" th:value="${option}" th:text="${option}">
+                                    </datalist>                       
+                
+                
+                            </div>
+                            <div class="form-group col-lg-4  col-sm-12">
+                                <label for="fechaIngreso">fecha Ingreso</label>
+                                <input id="fechaIngreso" type="date" class="form-control patito" name="fechaIngreso" th:field="*{fechaIngreso}"
+                                    placeholder="fechaIngreso" required />
+                            </div>
+                        </div>
+            
+                        <div class="form-row">
+                            <div class="form-group col-lg-6  col-sm-12">
+                                <label for="cliente">cliente</label>
+                                <input id="cliente" type="text" class="form-control patito" name="cliente" th:field="*{cliente}"
+                                    placeholder="cliente" required />    
+                            </div>
+                            <div class="form-group col-lg-6  col-sm-12">
+                                <label for="placa">placa</label>
+                                <input id="placa" type="text" class="form-control patito" name="placa" th:field="*{placa}"
+                                    placeholder="placa" required />
+                
+                            </div>
+                        </div>
+            
+                        <div class="form-row">
+            
+                
+                            <div class="form-group col-lg-3  col-sm-12">
+                                <label for="marca">marca</label>
+                                <input id="marca" type="text" class="form-control patito" name="marca" th:field="*{marca}"
+                                    placeholder="marca" required />
+                
+                            </div>
+                
+                            <div class="form-group col-lg-2  col-sm-12">
+                                <label for="anio">año</label>
+                                <input id="anio" type="text" class="form-control patito" name="anio" th:field="*{anio}"
+                                    placeholder="año" required />
+                
+                            </div>
+                
+                            <div class="form-group col-lg-3  col-sm-12">
+                                <label for="color">color</label>
+                                <input id="color" type="text" class="form-control patito" name="color" th:field="*{color}"
+                                    placeholder="color" required />
+                
+                            </div>
+                
+                            <div class="form-group col-lg-4  col-sm-12">
+                                <label for="tipoDeVehiculo">tipo De Vehiculo</label>
+                                <input id="tipoDeVehiculo" type="text" class="form-control patito" name="tipoDeVehiculo" th:field="*{tipoDeVehiculo}"
+                                    placeholder="tipoDeVehiculo" required />
+                
+                            </div>
+                        </div>
+            
+                        <div class="form-row">
+                            <div class="form-group col-lg-4  col-sm-12">
+                                <label for="planificadoManoDeObra">planificado Mano De Obra</label>
+                                <input id="planificadoManoDeObra" type="number" class="form-control patito" name="planificadoManoDeObra" th:field="*{planificadoManoDeObra}"
+                                    placeholder="planificadoManoDeObra" 
+                                    step="0.01" min="0"
+                                    required />
+                
+                            </div>
+                
+                            <div class="form-group col-lg-4  col-sm-12">
+                                <label for="planificadoMateriales">planificado Materiales</label>
+                                <input id="planificadoMateriales" type="number" class="form-control patito" name="planificadoMateriales" th:field="*{planificadoMateriales}"
+                                    placeholder="planificadoMateriales" 
+                                    step="0.01" min="0"
+                                    required />
+                
+                            </div>
+                
+                            <div class="form-group col-lg-4  col-sm-12">
+                                <label for="pintorEncargado">pintor Encargado</label>
+                                <input id="pintorEncargado" type="text" class="form-control patito" name="pintorEncargado" th:field="*{pintorEncargado}"
+                                    placeholder="pintorEncargado" list="pintores" required />
+                
+            
+                                    <datalist id="pintores">
+                                        <option th:each="option : ${pintores}" th:value="${option}" th:text="${option}">
+                                    </datalist>  
+                            </div>
+                        </div>
+            
 
-            <div class="form-row">
-                <div class="form-group col-lg-6  col-sm-12">
-                    <label for="cliente">cliente</label>
-                    <input id="cliente" type="text" class="form-control patito" name="cliente" th:field="*{cliente}"
-                        placeholder="cliente" required />    
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success m-3 btn-lg patito-ancho">Guardar
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                                <path d="M11 2H9v3h2z"/>
+                                <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                              </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group col-lg-6  col-sm-12">
-                    <label for="placa">placa</label>
-                    <input id="placa" type="text" class="form-control patito" name="placa" th:field="*{placa}"
-                        placeholder="placa" required />
-    
-                </div>
-            </div>
-
-            <div class="form-row">
-
-    
-                <div class="form-group col-lg-3  col-sm-12">
-                    <label for="marca">marca</label>
-                    <input id="marca" type="text" class="form-control patito" name="marca" th:field="*{marca}"
-                        placeholder="marca" required />
-    
-                </div>
-    
-                <div class="form-group col-lg-2  col-sm-12">
-                    <label for="anio">año</label>
-                    <input id="anio" type="text" class="form-control patito" name="anio" th:field="*{anio}"
-                        placeholder="año" required />
-    
-                </div>
-    
-                <div class="form-group col-lg-3  col-sm-12">
-                    <label for="color">color</label>
-                    <input id="color" type="text" class="form-control patito" name="color" th:field="*{color}"
-                        placeholder="color" required />
-    
-                </div>
-    
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="tipoDeVehiculo">tipo De Vehiculo</label>
-                    <input id="tipoDeVehiculo" type="text" class="form-control patito" name="tipoDeVehiculo" th:field="*{tipoDeVehiculo}"
-                        placeholder="tipoDeVehiculo" required />
-    
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="planificadoManoDeObra">planificado Mano De Obra</label>
-                    <input id="planificadoManoDeObra" type="number" class="form-control patito" name="planificadoManoDeObra" th:field="*{planificadoManoDeObra}"
-                        placeholder="planificadoManoDeObra" 
-                        step="0.01" min="0"
-                        required />
-    
-                </div>
-    
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="planificadoMateriales">planificado Materiales</label>
-                    <input id="planificadoMateriales" type="number" class="form-control patito" name="planificadoMateriales" th:field="*{planificadoMateriales}"
-                        placeholder="planificadoMateriales" 
-                        step="0.01" min="0"
-                        required />
-    
-                </div>
-    
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="pintorEncargado">pintor Encargado</label>
-                    <input id="pintorEncargado" type="text" class="form-control patito" name="pintorEncargado" th:field="*{pintorEncargado}"
-                        placeholder="pintorEncargado" list="pintores" required />
-    
-
-                        <datalist id="pintores">
-                            <option th:each="option : ${pintores}" th:value="${option}" th:text="${option}">
-                        </datalist>  
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-success m-3 btn-lg patito-ancho">Guardar
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-                    <path d="M11 2H9v3h2z"/>
-                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
-                  </svg>
-            </button>
-
-        </form>
-           
+            </form>           
     </div>
 </body>
 </html>

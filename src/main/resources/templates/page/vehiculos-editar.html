@@ -21,173 +21,181 @@
 <body>
 <header th:replace="~{layout/layout ::header}"></header>
 
-    <div class="container">
-        <h2>
-            MODIFICACION / CONSULTA DE VEHICULOS
-        </h2>
-        
+    <div class="container mt-3">
         <form th:action="@{/vehiculo/actualizar/{id}(id=${vehiculo.id})}" method="POST" th:object="${vehiculo}">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        MODIFICACION / CONSULTA DE VEHICULOS
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-row" hidden>
+                        <div class="form-group col-6">
+                            <label for="id">id</label>
+                            <input id="id" type="text" class="form-control patito" name="id" th:field="*{id}" placeholder="id"
+                                required />
+        
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="numeroSiniestro">numero Siniestro</label>
+                            <input id="numeroSiniestro" type="text" class="form-control patito" name="numeroSiniestro"
+                                th:field="*{numeroSiniestro}" placeholder="numeroSiniestro" onchange="cambioColor(this)" required />
+                        </div>
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="aseguradora">aseguradora</label>
+                            <input id="aseguradora" type="text" class="form-control patito" name="aseguradora" th:field="*{aseguradora}"
+                                placeholder="aseguradora" list="aseguradoras" onchange="cambioColor(this)" required />
+        
+                                <datalist id="aseguradoras">
+                                    <option th:each="option : ${aseguradoras}" th:value="${option}" th:text="${option}">
+                                </datalist>                       
+            
+                        </div>
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="fechaIngreso">fecha Ingreso</label>
+                            <input id="fechaIngreso" type="date" class="form-control patito" name="fechaIngreso"
+                                th:field="*{fechaIngreso}" placeholder="fechaIngreso" onchange="cambioColor(this)" required />
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group col-lg-6  col-sm-12">
+                            <label for="cliente">cliente</label>
+                            <input id="cliente" type="text" class="form-control patito" name="cliente" th:field="*{cliente}"
+                                placeholder="cliente"  onchange="cambioColor(this)" required />
+                        </div>
+                        <div class="form-group col-lg-6  col-sm-12">
+                            <label for="placa">placa</label>
+                            <input id="placa" type="text" class="form-control patito" name="placa" th:field="*{placa}"
+                                placeholder="placa" onchange="cambioColor(this)" required />
+        
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+        
+        
+                        <div class="form-group col-lg-3  col-sm-12">
+                            <label for="marca">marca</label>
+                            <input id="marca" type="text" class="form-control patito" name="marca" th:field="*{marca}"
+                                placeholder="marca" onchange="cambioColor(this)" required />
+        
+                        </div>
+        
+                        <div class="form-group col-lg-2  col-sm-12">
+                            <label for="anio">año</label>
+                            <input id="anio" type="text" class="form-control patito" name="anio" th:field="*{anio}" placeholder="año"
+                            onchange="cambioColor(this)" required />
+        
+                        </div>
+        
+                        <div class="form-group col-lg-3  col-sm-12">
+                            <label for="color">color</label>
+                            <input id="color" type="text" class="form-control patito" name="color" th:field="*{color}"
+                                placeholder="color" onchange="cambioColor(this)" required />
+        
+                        </div>
+        
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="tipoDeVehiculo">tipo De Vehiculo</label>
+                            <input id="tipoDeVehiculo" type="text" class="form-control patito" name="tipoDeVehiculo"
+                                th:field="*{tipoDeVehiculo}" placeholder="tipoDeVehiculo" onchange="cambioColor(this)" required />
+        
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="planificadoManoDeObra">planificado Mano De Obra</label>
+                            <input id="planificadoManoDeObra" type="number" class="form-control patito" name="planificadoManoDeObra"
+                                th:field="*{planificadoManoDeObra}" placeholder="planificadoManoDeObra" 
+                                step="0.01" min="0"
+                                onchange="cambioColor(this)" required />
+        
+                        </div>
+        
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="planificadoMateriales">planificado Materiales</label>
+                            <input id="planificadoMateriales" type="number" class="form-control patito" name="planificadoMateriales"
+                                th:field="*{planificadoMateriales}" placeholder="planificadoMateriales" 
+                                step="0.01" min="0"
+                                onchange="cambioColor(this)" required />
+        
+                        </div>
+        
+                        <div class="form-group col-lg-4  col-sm-12">
+                            <label for="pintorEncargado">pintor Encargado</label>
+                            <input id="pintorEncargado" type="text" class="form-control patito" name="pintorEncargado"
+                                th:field="*{pintorEncargado}" placeholder="pintorEncargado" list="pintores"  onchange="cambioColor(this)" required />
+        
+        
+                                <datalist id="pintores">
+                                    <option th:each="option : ${pintores}" th:value="${option}" th:text="${option}">
+                                </datalist>  
+                        </div>
+                    </div>
 
-            <div class="form-row" hidden>
-                <div class="form-group col-6">
-                    <label for="id">id</label>
-                    <input id="id" type="text" class="form-control patito" name="id" th:field="*{id}" placeholder="id"
-                        required />
+                </div>
+                <div class="card-footer">
 
+                    <div class="form-row">
+                        <div class="table-responsive">
+                            <table class="table table-striped  table-sm col-lg-12 col-sm-6">
+                                <tbody>
+                                    <tr>
+                                        <td class="col-4">
+                                            <button type="submit" class="btn btn-success btn-lg patito-ancho m-1">Guardar
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                                                    <path d="M11 2H9v3h2z"/>
+                                                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                                                  </svg>
+                                            </button>
+                                        </td>
+                                        <td class="col-4">
+                                            <a class="btn btn-info btn-lg patito-ancho m-1" th:href="@{/vehiculo/facturar/{id}(id=${vehiculo.id})}"  >Facturar vehiculo</a>
+                                        </td>
+                                        <td class="col-4">
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="col-4">
+                                            <a class="btn btn-info btn-lg m-1 disabled patito-ancho" th:href="@{/vehiculo/ingreso}"  >solicitud materiales</a>
+                                        </td>
+                                        <td class="col-4">
+                                            <a class="btn btn-info btn-lg m-1 disabled patito-ancho"
+                                                th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud repuestos</a>
+                                        </td>
+                                        <td class="col-4">
+                                            <a class="btn btn-danger btn-lg m-1 patito-ancho" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-4">
+                                            <a class="btn btn-info btn-lg m-1 patito-ancho" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">Agregar otros materiales</a>
+                                        </td>
+                                        <td class="col-4">
+                                            <a class="btn btn-info btn-lg m-1 patito-ancho " th:href="@{/repuestos/cargar/{id}(id=${vehiculo.id})}">Compra Repuestos</a>
+                                        </td>
+                                        <td class="col-4">
+                                            <a class="btn btn-info btn-lg m-1 patito-ancho" th:href="@{/mano-de-obra/cargar/{id}(id=${vehiculo.id})}">Cargar mano de obra</a>
+                                        </td>
+                                    </tr>
+        
+                                </tbody>
+                            </table>
+                        </div>
+        
+                    </div>
                 </div>
             </div>
-
-            <div class="form-row">
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="numeroSiniestro">numero Siniestro</label>
-                    <input id="numeroSiniestro" type="text" class="form-control patito" name="numeroSiniestro"
-                        th:field="*{numeroSiniestro}" placeholder="numeroSiniestro" onchange="cambioColor(this)" required />
-                </div>
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="aseguradora">aseguradora</label>
-                    <input id="aseguradora" type="text" class="form-control patito" name="aseguradora" th:field="*{aseguradora}"
-                        placeholder="aseguradora" list="aseguradoras" onchange="cambioColor(this)" required />
-
-                        <datalist id="aseguradoras">
-                            <option th:each="option : ${aseguradoras}" th:value="${option}" th:text="${option}">
-                        </datalist>                       
-    
-                </div>
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="fechaIngreso">fecha Ingreso</label>
-                    <input id="fechaIngreso" type="date" class="form-control patito" name="fechaIngreso"
-                        th:field="*{fechaIngreso}" placeholder="fechaIngreso" onchange="cambioColor(this)" required />
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-lg-6  col-sm-12">
-                    <label for="cliente">cliente</label>
-                    <input id="cliente" type="text" class="form-control patito" name="cliente" th:field="*{cliente}"
-                        placeholder="cliente"  onchange="cambioColor(this)" required />
-                </div>
-                <div class="form-group col-lg-6  col-sm-12">
-                    <label for="placa">placa</label>
-                    <input id="placa" type="text" class="form-control patito" name="placa" th:field="*{placa}"
-                        placeholder="placa" onchange="cambioColor(this)" required />
-
-                </div>
-            </div>
-
-            <div class="form-row">
-
-
-                <div class="form-group col-lg-3  col-sm-12">
-                    <label for="marca">marca</label>
-                    <input id="marca" type="text" class="form-control patito" name="marca" th:field="*{marca}"
-                        placeholder="marca" onchange="cambioColor(this)" required />
-
-                </div>
-
-                <div class="form-group col-lg-2  col-sm-12">
-                    <label for="anio">año</label>
-                    <input id="anio" type="text" class="form-control patito" name="anio" th:field="*{anio}" placeholder="año"
-                    onchange="cambioColor(this)" required />
-
-                </div>
-
-                <div class="form-group col-lg-3  col-sm-12">
-                    <label for="color">color</label>
-                    <input id="color" type="text" class="form-control patito" name="color" th:field="*{color}"
-                        placeholder="color" onchange="cambioColor(this)" required />
-
-                </div>
-
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="tipoDeVehiculo">tipo De Vehiculo</label>
-                    <input id="tipoDeVehiculo" type="text" class="form-control patito" name="tipoDeVehiculo"
-                        th:field="*{tipoDeVehiculo}" placeholder="tipoDeVehiculo" onchange="cambioColor(this)" required />
-
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="planificadoManoDeObra">planificado Mano De Obra</label>
-                    <input id="planificadoManoDeObra" type="number" class="form-control patito" name="planificadoManoDeObra"
-                        th:field="*{planificadoManoDeObra}" placeholder="planificadoManoDeObra" 
-                        step="0.01" min="0"
-                        onchange="cambioColor(this)" required />
-
-                </div>
-
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="planificadoMateriales">planificado Materiales</label>
-                    <input id="planificadoMateriales" type="number" class="form-control patito" name="planificadoMateriales"
-                        th:field="*{planificadoMateriales}" placeholder="planificadoMateriales" 
-                        step="0.01" min="0"
-                        onchange="cambioColor(this)" required />
-
-                </div>
-
-                <div class="form-group col-lg-4  col-sm-12">
-                    <label for="pintorEncargado">pintor Encargado</label>
-                    <input id="pintorEncargado" type="text" class="form-control patito" name="pintorEncargado"
-                        th:field="*{pintorEncargado}" placeholder="pintorEncargado" list="pintores"  onchange="cambioColor(this)" required />
-
-
-                        <datalist id="pintores">
-                            <option th:each="option : ${pintores}" th:value="${option}" th:text="${option}">
-                        </datalist>  
-                </div>
-            </div>
-
-
-                <button type="submit" class="btn btn-success btn-lg patito-ancho">Guardar
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-                        <path d="M11 2H9v3h2z"/>
-                        <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
-                      </svg>
-                </button>
- 
-
-
-
-
-
-
-            <div class="form-row">
-                <div class="table-responsive">
-                    <table class="table table-striped  table-sm col-lg-12 col-sm-6">
-                        <tbody>
-                            <tr>
-                                <td class="col-4">
-                                    <a class="btn btn-info btn-lg m-1 disabled patito-ancho" th:href="@{/vehiculo/ingreso}"  >solicitud materiales</a>
-                                </td>
-                                <td class="col-4">
-                                    <a class="btn btn-info btn-lg m-1 disabled patito-ancho"
-                                        th:href="@{/solicitud-repuesto/pedido/{id}(id=${vehiculo.id})}">solicitud repuestos</a>
-                                </td>
-                                <td class="col-4">
-                                    <a class="btn btn-danger btn-lg m-1 patito-ancho" th:href="@{/vehiculo/control-costos/{id}(id=${vehiculo.id})}" target="_blank">ir a control de costos</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-4">
-                                    <a class="btn btn-info btn-lg m-1 patito-ancho" th:href="@{/otros-materiales/cargar/{id}(id=${vehiculo.id})}">Agregar otros materiales</a>
-                                </td>
-                                <td class="col-4">
-                                    <a class="btn btn-info btn-lg m-1 patito-ancho " th:href="@{/repuestos/cargar/{id}(id=${vehiculo.id})}">Compra Repuestos</a>
-                                </td>
-                                <td class="col-4">
-                                    <a class="btn btn-info btn-lg m-1 patito-ancho" th:href="@{/mano-de-obra/cargar/{id}(id=${vehiculo.id})}">Cargar mano de obra</a>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-
         </form>
-
 
 
     </div>
