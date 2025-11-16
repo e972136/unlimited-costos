@@ -5,6 +5,7 @@ import com.gaspar.unlimited_costos.entity.ManoDeObra;
 
 import com.gaspar.unlimited_costos.repository.ManoDeObraRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class ManoDeObraService {
         this.manoDeObraRepository = manoDeObraRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<ManoDeObra> findAllByIdTransaccion(Integer idTransaccion) {
         return manoDeObraRepository.findAllByIdTransaccion(idTransaccion);
     }
@@ -24,6 +26,7 @@ public class ManoDeObraService {
         return manoDeObraRepository.save(solicitud);
     }
 
+    @Transactional(readOnly = true)
     public List<ManoDeObraReporte> findAllByMonth(String periodo) {
         String[] split = periodo.split("-");
         Double year = Double.parseDouble(split[0]);
@@ -31,6 +34,7 @@ public class ManoDeObraService {
         return manoDeObraRepository.findAllByYearMonto(year,month);
     }
 
+    @Transactional(readOnly = true)
     public List<String> findAllPintores() {
         return manoDeObraRepository.findAllPintores();
     }
